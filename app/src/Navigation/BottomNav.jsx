@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from 'react-router-dom';
-import { Home, ScanLine, Map, Grid } from "lucide-react";
+import { Home, ScanLine, Map, Grid, LogIn, UserPlus } from "lucide-react";
 
 export default function BottomNav() {
   const location = useLocation();
@@ -9,6 +9,8 @@ export default function BottomNav() {
     { to: "/scan", icon: ScanLine, label: "Scan" },
     { to: "/map", icon: Map, label: "Map" },
     { to: "/services", icon: Grid, label: "Services" },
+    { to: "/login", icon: LogIn, label: "Login" },
+    { to: "/signup", icon: UserPlus, label: "Sign Up" },
   ];
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around py-2 shadow-md z-50">
