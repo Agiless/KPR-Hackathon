@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function LoginPage() {
+import { useAuth } from "../context/AuthContext";
+
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simple validation (replace with real auth logic)
-    if (username === "user" && password === "pass") {
+    const success = login(username, password);
+    if (success) {
       navigate("/");
     } else {
       setError("Invalid username or password");
@@ -27,6 +30,7 @@ export default function LoginPage() {
           <input
             type="text"
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="enter username"
             value={username}
             onChange={e => setUsername(e.target.value)}
             required
@@ -37,6 +41,7 @@ export default function LoginPage() {
           <input
             type="password"
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="enter password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
@@ -56,3 +61,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage;
