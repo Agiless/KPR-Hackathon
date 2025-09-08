@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import NotificationPage from './pages/NotificationPage';
 import BottomNav from './Navigation/BottomNav';
 
 // function App() {
@@ -32,6 +33,7 @@ function AppRoutesWithNav() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/notifications" element={<NotificationPage />} />
       </Routes>
   <BottomNav />
     </div>
