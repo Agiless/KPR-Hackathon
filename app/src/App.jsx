@@ -1,34 +1,16 @@
-import './App.css'
-import ShoppingApp from './pages/home';
-import ScanPage from './pages/ScanPage';
-import MapPage from './pages/MapPage';
-import ServicesPage from './pages/ServicesPage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import BottomNav from './Navigation/BottomNav';
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
 
-function AppRoutesWithNav() {
-  // Nav bar should be visible on all pages
+function App() {
   return (
-    <div className="relative min-h-screen pb-16">
-      <Routes>
-        <Route path="/" element={<ShoppingApp />} />
-        <Route path="/scan" element={<ScanPage />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-      </Routes>
-  <BottomNav />
-    </div>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/home" element={<HomePage />} />
+    </Routes>
   );
 }
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <AppRoutesWithNav />
-    </BrowserRouter>
-  );
-}
+export default App;
