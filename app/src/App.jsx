@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -6,7 +7,7 @@ import ShoppingApp from './pages/home';
 import ScanPage from './pages/ScanPage';
 import MapPage from './pages/MapPage';
 import ServicesPage from './pages/ServicesPage';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/loginpage';
 import SignupPage from './pages/SignupPage';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import NotificationPage from './pages/NotificationPage';
@@ -50,3 +51,21 @@ export default function App() {
     </AuthProvider>
   );
 }
+=======
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/home" element={<HomePage />} />
+    </Routes>
+  );
+}
+
+export default App;
+>>>>>>> 35b61a8437256cf4873a212aa767541dfae32feb
