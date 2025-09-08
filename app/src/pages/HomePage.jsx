@@ -20,6 +20,7 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState({ visible: false, message: "" });
   const [activeSection, setActiveSection] = useState("home");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -62,6 +63,7 @@ const HomePage = () => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
+        setIsMobileMenuOpen(false);
       }
     };
     window.addEventListener("mousedown", handleClickOutside);
@@ -110,14 +112,19 @@ const HomePage = () => {
 
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full z-20 flex justify-between items-center px-8 py-4 bg-gray-900/60 backdrop-blur-md text-white">
-        <div className="flex space-x-2 text-lg font-medium">
-          <a href="#home" className={getNavLinkClasses("home")}>Home</a>
-          <a href="#features" className={getNavLinkClasses("features")}>Features</a>
-          <a href="#contact" className={getNavLinkClasses("contact")}>Contact</a>
-        </div>
+        {/* Project Name */}
+        <div className="text-2xl font-bold tracking-wide">Griffins</div>
 
-        {/* User Dropdown */}
-        <div className="relative flex items-center gap-4" ref={dropdownRef}>
+        {/* Right Side */}
+        <div className="flex items-center gap-4" ref={dropdownRef}>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-6 text-lg font-medium">
+            <a href="#home" className={getNavLinkClasses("home")}>Home</a>
+            <a href="#features" className={getNavLinkClasses("features")}>Features</a>
+            <a href="#contact" className={getNavLinkClasses("contact")}>Contact</a>
+          </div>
+
+          {/* User Dropdown */}
           {user ? (
             <div className="relative">
               <div
@@ -148,6 +155,38 @@ const HomePage = () => {
               Sign In
             </button>
           )}
+
+          {/* Hamburger Menu (Mobile) */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white focus:outline-none"
+            >
+              {/* Hamburger Icon */}
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+              <div className="absolute top-16 right-0 mt-2 w-48 bg-gray-800 rounded-xl shadow-xl p-4 space-y-4">
+                <a href="#home" className="block text-white hover:text-gray-300">Home</a>
+                <a href="#features" className="block text-white hover:text-gray-300">Features</a>
+                <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
 
@@ -156,41 +195,44 @@ const HomePage = () => {
 
       {/* Main Content */}
       <main className="relative z-10 text-white">
-                  {/* Hero */}
-          <section
-            id="home"
-            className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20"
-          >
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
-              Build Something
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400">
-                Extraordinary
-              </span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
-              A modern platform that delivers the best experiences. Responsive, fast, and designed for the future.
-            </p>
-            <div className="flex gap-4 flex-wrap justify-center">
-              <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-xl transition shadow-lg">
-                Get Started
-              </button>
-              <button className="border border-gray-300 text-gray-200 hover:bg-gray-50 hover:text-gray-900 px-8 py-3 rounded-xl transition shadow-lg">
-                Learn More
-              </button>
-            </div>
-          </section>
-
-          {/* ✨ Separator */}
-          <div className="relative w-full flex items-center justify-center py-8">
-            <div className="w-3/4 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+        {/* Hero */}
+        <section
+          id="home"
+          className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20"
+        >
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
+            Build Something
+            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400">
+              Extraordinary
+            </span>
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+            A modern platform that delivers the best experiences. Responsive, fast, and designed for the future.
+          </p>
+          <div className="flex gap-4 flex-wrap justify-center">
+            <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-xl transition shadow-lg">
+              Get Started
+            </button>
+            <button className="border border-gray-300 text-gray-200 hover:bg-gray-50 hover:text-gray-900 px-8 py-3 rounded-xl transition shadow-lg">
+              Learn More
+            </button>
           </div>
+        </section>
+
+        {/* ✨ Separator */}
+        <div className="relative w-full flex items-center justify-center py-8">
+          <div className="w-3/4 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+        </div>
 
         {/* Features */}
         <section id="features" className="py-20 px-6 sm:px-10 md:px-16 lg:px-20">
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">Features</h2>
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {mockFeatures.map((feature, index) => (
-              <div key={index} className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+              <div
+                key={index}
+                className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+              >
                 <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
                 <p className="text-gray-200">{feature.description}</p>
               </div>
@@ -210,7 +252,10 @@ const HomePage = () => {
                 </p>
                 <div className="space-y-6">
                   {mockContactInfo.map((item, index) => (
-                    <div key={index} className="flex items-center bg-white/10 p-4 rounded-xl shadow-md">
+                    <div
+                      key={index}
+                      className="flex items-center bg-white/10 p-4 rounded-xl shadow-md"
+                    >
                       <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mr-4 text-white font-semibold">
                         {item.label[0]}
                       </div>
@@ -286,4 +331,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
