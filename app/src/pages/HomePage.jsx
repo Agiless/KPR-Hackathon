@@ -122,6 +122,7 @@ const HomePage = () => {
             <a href="#home" className={getNavLinkClasses("home")}>Home</a>
             <a href="#features" className={getNavLinkClasses("features")}>Features</a>
             <a href="#contact" className={getNavLinkClasses("contact")}>Contact</a>
+            <a href="/chat" className="px-3 py-1 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-800/50">Chat</a>
           </div>
 
           {/* User Dropdown */}
