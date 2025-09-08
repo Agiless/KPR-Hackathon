@@ -6,12 +6,7 @@ import { useEffect } from "react";
 export default function ShoppingApp() {
   useEffect(() => {
     // Define an async function inside the effect
-    fetch('http://127.0.0.1:8000/demo', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json', // Specifies the format of the data being sent
-  },
-}).then((resp)=>console.log(resp)).catch((e)=>console.error(e))
+    fetch('http://127.0.0.1:8000/demo').then((resp)=> resp.json()).then((result)=>console.log(result)).catch((e)=>console.error(e))
 
   }, []);
   return (
