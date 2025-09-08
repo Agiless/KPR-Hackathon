@@ -11,6 +11,7 @@ import SignupPage from './pages/SignupPage';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import NotificationPage from './pages/NotificationPage';
 import BottomNav from './Navigation/BottomNav';
+import { AuthProvider } from './context/AuthContext';
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -42,8 +43,10 @@ function AppRoutesWithNav() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppRoutesWithNav />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <AppRoutesWithNav />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
