@@ -1,8 +1,19 @@
 import React from "react";
 import { Bell, Home, ScanLine, Map, Grid } from "lucide-react";
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
 
 export default function ShoppingApp() {
+  useEffect(() => {
+    // Define an async function inside the effect
+    fetch('http://127.0.0.1:8000/demo', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json', // Specifies the format of the data being sent
+  },
+}).then((resp)=>console.log(resp)).catch((e)=>console.error(e))
+
+  }, []);
   return (
     <div className="w-full max-w-sm mx-auto bg-white min-h-screen shadow-lg rounded-2xl overflow-hidden">
       {/* Header */}
