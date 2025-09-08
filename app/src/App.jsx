@@ -23,6 +23,18 @@ function AppRoutesWithNav() {
   <BottomNav />
     </div>
   );
+    <div className="relative min-h-screen pb-16">
+      <Routes>
+        <Route path="/" element={<ShoppingApp />} />
+        <Route path="/scan" element={<ScanPage />} />
+        <Route path="/map" element={<MapPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
+  <BottomNav />
+    </div>
+  );
 }
 
 export default function App() {
