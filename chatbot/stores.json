@@ -1,0 +1,282 @@
+[
+  {
+    "_id": "store_01_urbanwear",
+    "name": "UrbanWear",
+    "floor": 1,
+    "category": "Fashion & Apparel",
+    "description": "Your go-to spot for the latest streetwear and casual fashion trends.",
+    "tags": [
+      "clothing",
+      "urban",
+      "streetwear",
+      "apparel",
+      "fashion"
+    ]
+  },
+  {
+    "_id": "store_02_techhaven",
+    "name": "Tech Haven",
+    "floor": 2,
+    "category": "Electronics",
+    "description": "A cutting-edge store offering the latest in smart devices and gadgets.",
+    "tags": [
+      "electronics",
+      "gadgets",
+      "smartphones",
+      "laptops",
+      "technology"
+    ]
+  },
+  {
+    "_id": "store_03_sweetbliss",
+    "name": "Sweet Bliss",
+    "floor": 0,
+    "category": "Food & Beverage",
+    "description": "Indulge in a variety of delicious desserts and baked goods.",
+    "tags": [
+      "desserts",
+      "bakery",
+      "sweets",
+      "pastries",
+      "food"
+    ]
+  },
+  {
+    "_id": "store_04_thehomestore",
+    "name": "The Home Store",
+    "floor": 3,
+    "category": "Home & Decor",
+    "description": "Find everything you need to furnish and decorate your home.",
+    "tags": [
+      "furniture",
+      "home decor",
+      "kitchenware",
+      "bedding",
+      "home"
+    ]
+  },
+  {
+    "_id": "store_05_sportsgear",
+    "name": "Sports Gear",
+    "floor": 1,
+    "category": "Sporting Goods",
+    "description": "High-quality gear and apparel for all your athletic pursuits.",
+    "tags": [
+      "sports",
+      "fitness",
+      "apparel",
+      "equipment",
+      "running"
+    ]
+  },
+  {
+    "_id": "store_06_bookshelf",
+    "name": "The Bookshelf",
+    "floor": 2,
+    "category": "Books & Stationery",
+    "description": "A peaceful retreat for book lovers, with a wide selection of titles.",
+    "tags": [
+      "books",
+      "stationery",
+      "novels",
+      "comics",
+      "reading"
+    ]
+  },
+  {
+    "_id": "store_07_jewelcorner",
+    "name": "Jewel Corner",
+    "floor": 0,
+    "category": "Jewelry",
+    "description": "Exquisite and elegant jewelry for every occasion.",
+    "tags": [
+      "jewelry",
+      "rings",
+      "necklaces",
+      "earrings",
+      "accessories"
+    ]
+  },
+  {
+    "_id": "store_08_coffeecrave",
+    "name": "Coffee Crave",
+    "floor": 2,
+    "category": "Food & Beverage",
+    "description": "A cozy cafe serving a variety of hot and cold coffee drinks.",
+    "tags": [
+      "coffee",
+      "cafe",
+      "beverages",
+      "snacks",
+      "food"
+    ]
+  },
+  {
+    "_id": "store_09_kidzworld",
+    "name": "Kidz World",
+    "floor": 1,
+    "category": "Toys & Hobbies",
+    "description": "A fun-filled store with a massive collection of toys and games for kids.",
+    "tags": [
+      "toys",
+      "games",
+      "kids",
+      "hobbies",
+      "children"
+    ]
+  },
+  {
+    "_id": "store_10_healthplus",
+    "name": "Health Plus Pharmacy",
+    "floor": 0,
+    "category": "Health & Beauty",
+    "description": "Your trusted pharmacy for medicines, health supplements, and beauty products.",
+    "tags": [
+      "pharmacy",
+      "medicine",
+      "health",
+      "beauty",
+      "skincare"
+    ]
+  },
+  {
+    "_id": "store_11_freshfinds",
+    "name": "Fresh Finds Supermarket",
+    "floor": 1,
+    "category": "Supermarket",
+    "description": "A comprehensive supermarket offering fresh produce, groceries, and daily essentials.",
+    "tags": [
+      "groceries",
+      "food",
+      "essentials",
+      "supermarket",
+      "fresh"
+    ]
+  },
+  {
+    "_id": "store_12_thekitchenco",
+    "name": "The Kitchen Co.",
+    "floor": 3,
+    "category": "Home & Decor",
+    "description": "High-end kitchenware and cookware for the modern chef.",
+    "tags": [
+      "kitchenware",
+      "cookware",
+      "appliances",
+      "utensils",
+      "home"
+    ]
+  },
+  {
+    "_id": "store_13_glamorous",
+    "name": "Glamorous Cosmetics",
+    "floor": 1,
+    "category": "Health & Beauty",
+    "description": "A wide range of cosmetics, perfumes, and skincare products from top brands.",
+    "tags": [
+      "makeup",
+      "cosmetics",
+      "skincare",
+      "beauty",
+      "perfumes"
+    ]
+  },
+  {
+    "_id": "store_14_gamershub",
+    "name": "Gamers' Hub",
+    "floor": 2,
+    "category": "Electronics",
+    "description": "The ultimate destination for video games, consoles, and gaming accessories.",
+    "tags": [
+      "gaming",
+      "video games",
+      "consoles",
+      "accessories",
+      "electronics"
+    ]
+  },
+  {
+    "_id": "store_15_travelgear",
+    "name": "Travel Gear",
+    "floor": 0,
+    "category": "Travel",
+    "description": "Everything you need for your next adventure, from luggage to travel accessories.",
+    "tags": [
+      "luggage",
+      "travel",
+      "bags",
+      "accessories",
+      "outdoor"
+    ]
+  },
+  {
+    "_id": "store_16_cinemax",
+    "name": "Cinemax",
+    "floor": 3,
+    "category": "Entertainment",
+    "description": "A state-of-the-art cinema with multiple screens showing the latest blockbusters.",
+    "tags": [
+      "cinema",
+      "movies",
+      "films",
+      "entertainment",
+      "theater"
+    ]
+  },
+  {
+    "_id": "store_17_ecofashion",
+    "name": "Eco Fashion",
+    "floor": 1,
+    "category": "Fashion & Apparel",
+    "description": "Sustainable and eco-friendly fashion for the conscious shopper.",
+    "tags": [
+      "clothing",
+      "sustainable",
+      "eco-friendly",
+      "fashion",
+      "apparel"
+    ]
+  },
+  {
+    "_id": "store_18_petspalace",
+    "name": "Pets Palace",
+    "floor": 0,
+    "category": "Pet Supplies",
+    "description": "All the food, toys, and accessories your furry friends could ever want.",
+    "tags": [
+      "pets",
+      "pet food",
+      "toys",
+      "supplies",
+      "animals"
+    ]
+  },
+  {
+    "_id": "store_19_fitnessfusion",
+    "name": "Fitness Fusion",
+    "floor": 2,
+    "category": "Sporting Goods",
+    "description": "A modern gym and health club with the latest workout equipment and classes.",
+    "tags": [
+      "gym",
+      "fitness",
+      "workout",
+      "health",
+      "equipment"
+    ]
+  },
+  {
+    "_id": "store_20_artisanbites",
+    "name": "Artisan Bites",
+    "floor": 0,
+    "category": "Food & Beverage",
+    "description": "Handcrafted snacks and specialty food items for the gourmet palate.",
+    "tags": [
+      "snacks",
+      "gourmet",
+      "food",
+      "artisan",
+      "delicatessen"
+    ]
+  }
+]

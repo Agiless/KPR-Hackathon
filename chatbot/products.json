@@ -1,0 +1,2400 @@
+[
+  {
+    "_id": "prod_001",
+    "store_id": "store_01_urbanwear",
+    "name": "Men's Slim Fit Jeans",
+    "brand": "True Blue",
+    "price": 2999,
+    "currency": "INR",
+    "attributes": {
+      "color": "Dark Blue",
+      "size": "32x32"
+    }
+  },
+  {
+    "_id": "prod_002",
+    "store_id": "store_01_urbanwear",
+    "name": "Oversized Graphic T-Shirt",
+    "brand": "Urban Core",
+    "price": 1299,
+    "currency": "INR",
+    "attributes": {
+      "color": "Black",
+      "size": "L"
+    }
+  },
+  {
+    "_id": "prod_003",
+    "store_id": "store_01_urbanwear",
+    "name": "Hoodie with Kangaroo Pocket",
+    "brand": "Street Vibe",
+    "price": 2499,
+    "currency": "INR",
+    "attributes": {
+      "color": "Grey",
+      "size": "M"
+    }
+  },
+  {
+    "_id": "prod_004",
+    "store_id": "store_01_urbanwear",
+    "name": "Distressed Denim Jacket",
+    "brand": "Raw Edge",
+    "price": 3999,
+    "currency": "INR",
+    "attributes": {
+      "color": "Light Blue",
+      "size": "XL"
+    }
+  },
+  {
+    "_id": "prod_005",
+    "store_id": "store_01_urbanwear",
+    "name": "High-Top Sneakers",
+    "brand": "Elevate",
+    "price": 4500,
+    "currency": "INR",
+    "attributes": {
+      "color": "White",
+      "size": "10"
+    }
+  },
+  {
+    "_id": "prod_006",
+    "store_id": "store_01_urbanwear",
+    "name": "Cargo Joggers",
+    "brand": "Trailblazer",
+    "price": 2799,
+    "currency": "INR",
+    "attributes": {
+      "color": "Olive Green",
+      "size": "S"
+    }
+  },
+  {
+    "_id": "prod_007",
+    "store_id": "store_01_urbanwear",
+    "name": "Snapback Cap",
+    "brand": "Iconic",
+    "price": 899,
+    "currency": "INR",
+    "attributes": {
+      "color": "Navy Blue",
+      "adjustable": "True"
+    }
+  },
+  {
+    "_id": "prod_008",
+    "store_id": "store_01_urbanwear",
+    "name": "Printed Crewneck Sweatshirt",
+    "brand": "Threadworks",
+    "price": 1999,
+    "currency": "INR",
+    "attributes": {
+      "color": "Burgundy",
+      "size": "L"
+    }
+  },
+  {
+    "_id": "prod_009",
+    "store_id": "store_01_urbanwear",
+    "name": "Leather Biker Jacket",
+    "brand": "Rebel Road",
+    "price": 7999,
+    "currency": "INR",
+    "attributes": {
+      "color": "Black",
+      "size": "M"
+    }
+  },
+  {
+    "_id": "prod_010",
+    "store_id": "store_01_urbanwear",
+    "name": "Utility Vest",
+    "brand": "Urban Expedition",
+    "price": 3499,
+    "currency": "INR",
+    "attributes": {
+      "color": "Khaki",
+      "size": "One Size"
+    }
+  },
+  {
+    "_id": "prod_011",
+    "store_id": "store_02_techhaven",
+    "name": "Ultra-Thin Laptop",
+    "brand": "Infinia",
+    "price": 75000,
+    "currency": "INR",
+    "attributes": {
+      "display": "14-inch OLED",
+      "storage": "512GB SSD"
+    }
+  },
+  {
+    "_id": "prod_012",
+    "store_id": "store_02_techhaven",
+    "name": "Noise-Cancelling Headphones",
+    "brand": "AudioSphere",
+    "price": 18500,
+    "currency": "INR",
+    "attributes": {
+      "color": "Matte Black",
+      "battery": "30-hour"
+    }
+  },
+  {
+    "_id": "prod_013",
+    "store_id": "store_02_techhaven",
+    "name": "4K Smart TV",
+    "brand": "Clarity Displays",
+    "price": 55000,
+    "currency": "INR",
+    "attributes": {
+      "size": "55-inch",
+      "resolution": "4K UHD"
+    }
+  },
+  {
+    "_id": "prod_014",
+    "store_id": "store_02_techhaven",
+    "name": "Portable Power Bank",
+    "brand": "ChargeUp",
+    "price": 2999,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "20000mAh",
+      "ports": "USB-C, USB-A"
+    }
+  },
+  {
+    "_id": "prod_015",
+    "store_id": "store_02_techhaven",
+    "name": "Smart Speaker with AI",
+    "brand": "EchoTone",
+    "price": 7999,
+    "currency": "INR",
+    "attributes": {
+      "color": "White",
+      "assistant": "Aura"
+    }
+  },
+  {
+    "_id": "prod_016",
+    "store_id": "store_02_techhaven",
+    "name": "Wireless Gaming Mouse",
+    "brand": "Apex Gaming",
+    "price": 5499,
+    "currency": "INR",
+    "attributes": {
+      "DPI": "16000",
+      "buttons": 8
+    }
+  },
+  {
+    "_id": "prod_017",
+    "store_id": "store_02_techhaven",
+    "name": "Curved Ultrawide Monitor",
+    "brand": "VistaVision",
+    "price": 45000,
+    "currency": "INR",
+    "attributes": {
+      "size": "34-inch",
+      "aspect_ratio": "21:9"
+    }
+  },
+  {
+    "_id": "prod_018",
+    "store_id": "store_02_techhaven",
+    "name": "Compact Digital Camera",
+    "brand": "Pixel Pro",
+    "price": 25000,
+    "currency": "INR",
+    "attributes": {
+      "resolution": "24MP",
+      "zoom": "10x Optical"
+    }
+  },
+  {
+    "_id": "prod_019",
+    "store_id": "store_02_techhaven",
+    "name": "E-Reader",
+    "brand": "InkWell",
+    "price": 10500,
+    "currency": "INR",
+    "attributes": {
+      "display": "E-Ink",
+      "storage": "8GB"
+    }
+  },
+  {
+    "_id": "prod_020",
+    "store_id": "store_02_techhaven",
+    "name": "Portable Bluetooth Speaker",
+    "brand": "SoundWave",
+    "price": 4500,
+    "currency": "INR",
+    "attributes": {
+      "battery": "12-hour",
+      "waterproof": "True"
+    }
+  },
+  {
+    "_id": "prod_021",
+    "store_id": "store_03_sweetbliss",
+    "name": "Chocolate Lava Cake",
+    "brand": "Sweet Bliss",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "serving": "Single",
+      "dietary": "Vegetarian"
+    }
+  },
+  {
+    "_id": "prod_022",
+    "store_id": "store_03_sweetbliss",
+    "name": "Red Velvet Cupcake",
+    "brand": "Blissful Bites",
+    "price": 90,
+    "currency": "INR",
+    "attributes": {
+      "topping": "Cream Cheese Frosting",
+      "flavor": "Red Velvet"
+    }
+  },
+  {
+    "_id": "prod_023",
+    "store_id": "store_03_sweetbliss",
+    "name": "Assorted Macarons (Box of 6)",
+    "brand": "Parisian Treats",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "flavors": [
+        "Pistachio",
+        "Raspberry",
+        "Chocolate"
+      ]
+    }
+  },
+  {
+    "_id": "prod_024",
+    "store_id": "store_03_sweetbliss",
+    "name": "Cheesecake Slice",
+    "brand": "The Daily Slice",
+    "price": 180,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Classic",
+      "topping": "Strawberry"
+    }
+  },
+  {
+    "_id": "prod_025",
+    "store_id": "store_03_sweetbliss",
+    "name": "Tiramisu Cup",
+    "brand": "Italian Delights",
+    "price": 220,
+    "currency": "INR",
+    "attributes": {
+      "serving": "Single",
+      "allergens": "Dairy, Eggs"
+    }
+  },
+  {
+    "_id": "prod_026",
+    "store_id": "store_03_sweetbliss",
+    "name": "Dark Chocolate Brownie",
+    "brand": "Cocoa Craze",
+    "price": 150,
+    "currency": "INR",
+    "attributes": {
+      "texture": "Fudgy",
+      "flavor": "Dark Chocolate"
+    }
+  },
+  {
+    "_id": "prod_027",
+    "store_id": "store_03_sweetbliss",
+    "name": "Mango Mousse",
+    "brand": "Fruity Fusions",
+    "price": 175,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Mango",
+      "serving": "Cup"
+    }
+  },
+  {
+    "_id": "prod_028",
+    "store_id": "store_03_sweetbliss",
+    "name": "Assorted Donuts",
+    "brand": "Hole-in-One",
+    "price": 75,
+    "currency": "INR",
+    "attributes": {
+      "type": "Yeast",
+      "glaze": "Chocolate"
+    }
+  },
+  {
+    "_id": "prod_029",
+    "store_id": "store_03_sweetbliss",
+    "name": "Fruit Tart",
+    "brand": "Pastry Perfection",
+    "price": 200,
+    "currency": "INR",
+    "attributes": {
+      "fruit": "Mixed Berries",
+      "crust": "Shortcrust"
+    }
+  },
+  {
+    "_id": "prod_030",
+    "store_id": "store_03_sweetbliss",
+    "name": "Chocolate Chip Cookie",
+    "brand": "The Cookie Jar",
+    "price": 60,
+    "currency": "INR",
+    "attributes": {
+      "size": "Large",
+      "texture": "Chewy"
+    }
+  },
+  {
+    "_id": "prod_031",
+    "store_id": "store_04_thehomestore",
+    "name": "Modern Sectional Sofa",
+    "brand": "Comfort Living",
+    "price": 45000,
+    "currency": "INR",
+    "attributes": {
+      "color": "Grey",
+      "material": "Fabric"
+    }
+  },
+  {
+    "_id": "prod_032",
+    "store_id": "store_04_thehomestore",
+    "name": "Geometric Wall Art",
+    "brand": "Artisanal Walls",
+    "price": 8999,
+    "currency": "INR",
+    "attributes": {
+      "size": "30x40 inches",
+      "material": "Canvas"
+    }
+  },
+  {
+    "_id": "prod_033",
+    "store_id": "store_04_thehomestore",
+    "name": "Dining Table Set",
+    "brand": "Solid Woods",
+    "price": 32000,
+    "currency": "INR",
+    "attributes": {
+      "material": "Sheesham Wood",
+      "seating": 6
+    }
+  },
+  {
+    "_id": "prod_034",
+    "store_id": "store_04_thehomestore",
+    "name": "King Size Bed Frame",
+    "brand": "SleepWell",
+    "price": 28000,
+    "currency": "INR",
+    "attributes": {
+      "material": "Engineered Wood",
+      "style": "Platform"
+    }
+  },
+  {
+    "_id": "prod_035",
+    "store_id": "store_04_thehomestore",
+    "name": "Plush Area Rug",
+    "brand": "Cosy Floors",
+    "price": 12500,
+    "currency": "INR",
+    "attributes": {
+      "color": "Beige",
+      "size": "5x8 feet"
+    }
+  },
+  {
+    "_id": "prod_036",
+    "store_id": "store_04_thehomestore",
+    "name": "Ceramic Vases (Set of 3)",
+    "brand": "Pottery Charm",
+    "price": 3499,
+    "currency": "INR",
+    "attributes": {
+      "color": "Terracotta",
+      "style": "Handcrafted"
+    }
+  },
+  {
+    "_id": "prod_037",
+    "store_id": "store_04_thehomestore",
+    "name": "Floor Lamp",
+    "brand": "Illuminata",
+    "price": 6700,
+    "currency": "INR",
+    "attributes": {
+      "height": "60 inches",
+      "material": "Metal"
+    }
+  },
+  {
+    "_id": "prod_038",
+    "store_id": "store_04_thehomestore",
+    "name": "Throw Pillow (Geometric Print)",
+    "brand": "Cushion Co.",
+    "price": 950,
+    "currency": "INR",
+    "attributes": {
+      "size": "18x18 inches",
+      "material": "Cotton"
+    }
+  },
+  {
+    "_id": "prod_039",
+    "store_id": "store_04_thehomestore",
+    "name": "Wall Mirror",
+    "brand": "Reflections",
+    "price": 4500,
+    "currency": "INR",
+    "attributes": {
+      "shape": "Round",
+      "frame_color": "Gold"
+    }
+  },
+  {
+    "_id": "prod_040",
+    "store_id": "store_04_thehomestore",
+    "name": "Bookcase with Shelves",
+    "brand": "Libris",
+    "price": 15000,
+    "currency": "INR",
+    "attributes": {
+      "material": "Wood",
+      "height": "72 inches"
+    }
+  },
+  {
+    "_id": "prod_041",
+    "store_id": "store_05_sportsgear",
+    "name": "Men's Running Shoes",
+    "brand": "SprintX",
+    "price": 5499,
+    "currency": "INR",
+    "attributes": {
+      "size": "9",
+      "color": "Blue"
+    }
+  },
+  {
+    "_id": "prod_042",
+    "store_id": "store_05_sportsgear",
+    "name": "Yoga Mat",
+    "brand": "ZenFlow",
+    "price": 1499,
+    "currency": "INR",
+    "attributes": {
+      "thickness": "6mm",
+      "color": "Purple"
+    }
+  },
+  {
+    "_id": "prod_043",
+    "store_id": "store_05_sportsgear",
+    "name": "Cricket Bat",
+    "brand": "PowerDrive",
+    "price": 3500,
+    "currency": "INR",
+    "attributes": {
+      "material": "Kashmir Willow",
+      "weight": "Light"
+    }
+  },
+  {
+    "_id": "prod_044",
+    "store_id": "store_05_sportsgear",
+    "name": "Treadmill",
+    "brand": "FitLife",
+    "price": 28000,
+    "currency": "INR",
+    "attributes": {
+      "features": [
+        "Incline",
+        "Heart Rate Monitor"
+      ]
+    }
+  },
+  {
+    "_id": "prod_045",
+    "store_id": "store_05_sportsgear",
+    "name": "Tennis Racket",
+    "brand": "SwiftStrike",
+    "price": 6700,
+    "currency": "INR",
+    "attributes": {
+      "weight": "Medium",
+      "grip_size": "4 1/4"
+    }
+  },
+  {
+    "_id": "prod_046",
+    "store_id": "store_05_sportsgear",
+    "name": "Water Bottle",
+    "brand": "Hydrate Now",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "1 liter",
+      "material": "Stainless Steel"
+    }
+  },
+  {
+    "_id": "prod_047",
+    "store_id": "store_05_sportsgear",
+    "name": "Men's Training Shorts",
+    "brand": "Activewear",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "size": "L",
+      "color": "Black"
+    }
+  },
+  {
+    "_id": "prod_048",
+    "store_id": "store_05_sportsgear",
+    "name": "Football",
+    "brand": "Goalgetter",
+    "price": 800,
+    "currency": "INR",
+    "attributes": {
+      "size": "5",
+      "material": "Synthetic"
+    }
+  },
+  {
+    "_id": "prod_049",
+    "store_id": "store_05_sportsgear",
+    "name": "Dumbbell Set",
+    "brand": "Iron Gym",
+    "price": 7500,
+    "currency": "INR",
+    "attributes": {
+      "weight": "10kg",
+      "material": "Cast Iron"
+    }
+  },
+  {
+    "_id": "prod_050",
+    "store_id": "store_05_sportsgear",
+    "name": "Swimming Goggles",
+    "brand": "AquaFlow",
+    "price": 550,
+    "currency": "INR",
+    "attributes": {
+      "lens": "Anti-fog",
+      "color": "Clear"
+    }
+  },
+  {
+    "_id": "prod_051",
+    "store_id": "store_06_bookshelf",
+    "name": "The Midnight Library",
+    "brand": "Penguin Books",
+    "price": 350,
+    "currency": "INR",
+    "attributes": {
+      "author": "Matt Haig",
+      "genre": "Fiction"
+    }
+  },
+  {
+    "_id": "prod_052",
+    "store_id": "store_06_bookshelf",
+    "name": "Atomic Habits",
+    "brand": "Avery",
+    "price": 499,
+    "currency": "INR",
+    "attributes": {
+      "author": "James Clear",
+      "genre": "Self-Help"
+    }
+  },
+  {
+    "_id": "prod_053",
+    "store_id": "store_06_bookshelf",
+    "name": "A Promised Land",
+    "brand": "Crown",
+    "price": 899,
+    "currency": "INR",
+    "attributes": {
+      "author": "Barack Obama",
+      "genre": "Autobiography"
+    }
+  },
+  {
+    "_id": "prod_054",
+    "store_id": "store_06_bookshelf",
+    "name": "Set of 5 Gel Pens",
+    "brand": "SmoothWrite",
+    "price": 150,
+    "currency": "INR",
+    "attributes": {
+      "color": "Assorted",
+      "ink": "Gel"
+    }
+  },
+  {
+    "_id": "prod_055",
+    "store_id": "store_06_bookshelf",
+    "name": "Leather-bound Journal",
+    "brand": "Vintage Journals",
+    "price": 600,
+    "currency": "INR",
+    "attributes": {
+      "size": "A5",
+      "material": "Faux Leather"
+    }
+  },
+  {
+    "_id": "prod_056",
+    "store_id": "store_06_bookshelf",
+    "name": "Coloring Book for Adults",
+    "brand": "Creative Hues",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "theme": "Mandalas",
+      "pages": 50
+    }
+  },
+  {
+    "_id": "prod_057",
+    "store_id": "store_06_bookshelf",
+    "name": "Fountain Pen",
+    "brand": "InkFlow",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "nib": "Fine",
+      "color": "Black"
+    }
+  },
+  {
+    "_id": "prod_058",
+    "store_id": "store_06_bookshelf",
+    "name": "Hardcover Sketchbook",
+    "brand": "Artistic Touch",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "paper_type": "Acid-Free",
+      "size": "A4"
+    }
+  },
+  {
+    "_id": "prod_059",
+    "store_id": "store_06_bookshelf",
+    "name": "Bestsellers Collection (Box Set)",
+    "brand": "Various",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "books": 3,
+      "genre": "Thriller"
+    }
+  },
+  {
+    "_id": "prod_060",
+    "store_id": "store_06_bookshelf",
+    "name": "Educational Flash Cards",
+    "brand": "Mindful Learners",
+    "price": 300,
+    "currency": "INR",
+    "attributes": {
+      "subject": "Mathematics",
+      "age_group": "5-8 years"
+    }
+  },
+  {
+    "_id": "prod_061",
+    "store_id": "store_07_jewelcorner",
+    "name": "Diamond Solitaire Ring",
+    "brand": "Timeless Gems",
+    "price": 55000,
+    "currency": "INR",
+    "attributes": {
+      "stone": "Diamond",
+      "material": "White Gold"
+    }
+  },
+  {
+    "_id": "prod_062",
+    "store_id": "store_07_jewelcorner",
+    "name": "Silver Heart Pendant",
+    "brand": "Elegance",
+    "price": 4500,
+    "currency": "INR",
+    "attributes": {
+      "material": "Sterling Silver",
+      "chain_length": "18 inches"
+    }
+  },
+  {
+    "_id": "prod_063",
+    "store_id": "store_07_jewelcorner",
+    "name": "Pearl Drop Earrings",
+    "brand": "Ocean Jewels",
+    "price": 7200,
+    "currency": "INR",
+    "attributes": {
+      "stone": "Pearl",
+      "clasp": "Hook"
+    }
+  },
+  {
+    "_id": "prod_064",
+    "store_id": "store_07_jewelcorner",
+    "name": "Gold Bangle Bracelet",
+    "brand": "Golden Touch",
+    "price": 28000,
+    "currency": "INR",
+    "attributes": {
+      "material": "18k Gold",
+      "style": "Bangle"
+    }
+  },
+  {
+    "_id": "prod_065",
+    "store_id": "store_07_jewelcorner",
+    "name": "Gemstone Studs",
+    "brand": "Colorful Charms",
+    "price": 3800,
+    "currency": "INR",
+    "attributes": {
+      "stone": "Topaz",
+      "material": "Silver"
+    }
+  },
+  {
+    "_id": "prod_066",
+    "store_id": "store_07_jewelcorner",
+    "name": "Men's Stainless Steel Watch",
+    "brand": "Chronos",
+    "price": 11500,
+    "currency": "INR",
+    "attributes": {
+      "movement": "Quartz",
+      "strap": "Stainless Steel"
+    }
+  },
+  {
+    "_id": "prod_067",
+    "store_id": "store_07_jewelcorner",
+    "name": "Custom Engraved Locket",
+    "brand": "Memory Makers",
+    "price": 9500,
+    "currency": "INR",
+    "attributes": {
+      "material": "Rose Gold",
+      "chain_length": "20 inches"
+    }
+  },
+  {
+    "_id": "prod_068",
+    "store_id": "store_07_jewelcorner",
+    "name": "Birthstone Necklace",
+    "brand": "Zodiac Jewels",
+    "price": 6200,
+    "currency": "INR",
+    "attributes": {
+      "stone": "Amethyst",
+      "material": "Gold Plated"
+    }
+  },
+  {
+    "_id": "prod_069",
+    "store_id": "store_07_jewelcorner",
+    "name": "Statement Necklace",
+    "brand": "Bold Accents",
+    "price": 15000,
+    "currency": "INR",
+    "attributes": {
+      "material": "Brass",
+      "style": "Chunky"
+    }
+  },
+  {
+    "_id": "prod_070",
+    "store_id": "store_07_jewelcorner",
+    "name": "Anklet with Charms",
+    "brand": "Beachcomber",
+    "price": 2500,
+    "currency": "INR",
+    "attributes": {
+      "material": "Sterling Silver",
+      "length": "Adjustable"
+    }
+  },
+  {
+    "_id": "prod_071",
+    "store_id": "store_08_coffeecrave",
+    "name": "Espresso Shot",
+    "brand": "Coffee Crave",
+    "price": 120,
+    "currency": "INR",
+    "attributes": {
+      "type": "Single",
+      "origin": "Arabica"
+    }
+  },
+  {
+    "_id": "prod_072",
+    "store_id": "store_08_coffeecrave",
+    "name": "Cafe Latte",
+    "brand": "Coffee Crave",
+    "price": 180,
+    "currency": "INR",
+    "attributes": {
+      "type": "Hot",
+      "milk": "Full Cream"
+    }
+  },
+  {
+    "_id": "prod_073",
+    "store_id": "store_08_coffeecrave",
+    "name": "Iced Americano",
+    "brand": "Coffee Crave",
+    "price": 160,
+    "currency": "INR",
+    "attributes": {
+      "type": "Cold",
+      "sweetener": "Optional"
+    }
+  },
+  {
+    "_id": "prod_074",
+    "store_id": "store_08_coffeecrave",
+    "name": "Caramel Macchiato",
+    "brand": "Coffee Crave",
+    "price": 220,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Caramel",
+      "serving": "Hot"
+    }
+  },
+  {
+    "_id": "prod_075",
+    "store_id": "store_08_coffeecrave",
+    "name": "Mocha Frappe",
+    "brand": "Coffee Crave",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Chocolate",
+      "type": "Blended"
+    }
+  },
+  {
+    "_id": "prod_076",
+    "store_id": "store_08_coffeecrave",
+    "name": "Assorted Muffins",
+    "brand": "Coffee Crave",
+    "price": 95,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Blueberry",
+      "serving": "Single"
+    }
+  },
+  {
+    "_id": "prod_077",
+    "store_id": "store_08_coffeecrave",
+    "name": "Croissant",
+    "brand": "Coffee Crave",
+    "price": 110,
+    "currency": "INR",
+    "attributes": {
+      "type": "Pastry",
+      "flavor": "Butter"
+    }
+  },
+  {
+    "_id": "prod_078",
+    "store_id": "store_08_coffeecrave",
+    "name": "Green Tea",
+    "brand": "Coffee Crave",
+    "price": 80,
+    "currency": "INR",
+    "attributes": {
+      "type": "Hot Tea",
+      "flavor": "Matcha"
+    }
+  },
+  {
+    "_id": "prod_079",
+    "store_id": "store_08_coffeecrave",
+    "name": "Frappuccino",
+    "brand": "Coffee Crave",
+    "price": 280,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Vanilla Bean",
+      "topping": "Whipped Cream"
+    }
+  },
+  {
+    "_id": "prod_080",
+    "store_id": "store_08_coffeecrave",
+    "name": "Hot Chocolate",
+    "brand": "Coffee Crave",
+    "price": 190,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Rich Chocolate",
+      "serving": "Hot"
+    }
+  },
+  {
+    "_id": "prod_081",
+    "store_id": "store_09_kidzworld",
+    "name": "LEGO City Fire Station",
+    "brand": "LEGO",
+    "price": 5500,
+    "currency": "INR",
+    "attributes": {
+      "age_range": "6+",
+      "pieces": 510
+    }
+  },
+  {
+    "_id": "prod_082",
+    "store_id": "store_09_kidzworld",
+    "name": "Barbie Dreamhouse",
+    "brand": "Mattel",
+    "price": 8999,
+    "currency": "INR",
+    "attributes": {
+      "features": "Dollhouse, Furniture"
+    }
+  },
+  {
+    "_id": "prod_083",
+    "store_id": "store_09_kidzworld",
+    "name": "Remote Control Car",
+    "brand": "Hot Wheels",
+    "price": 2499,
+    "currency": "INR",
+    "attributes": {
+      "scale": "1:18",
+      "battery": "Rechargeable"
+    }
+  },
+  {
+    "_id": "prod_084",
+    "store_id": "store_09_kidzworld",
+    "name": "My First Building Blocks Set",
+    "brand": "Mega Bloks",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "age_range": "1-3",
+      "pieces": 80
+    }
+  },
+  {
+    "_id": "prod_085",
+    "store_id": "store_09_kidzworld",
+    "name": "Monopoly Board Game",
+    "brand": "Hasbro",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "players": "2-8",
+      "age_range": "8+"
+    }
+  },
+  {
+    "_id": "prod_086",
+    "store_id": "store_09_kidzworld",
+    "name": "Wooden Puzzle",
+    "brand": "Melissa & Doug",
+    "price": 750,
+    "currency": "INR",
+    "attributes": {
+      "theme": "Animals",
+      "pieces": 24
+    }
+  },
+  {
+    "_id": "prod_087",
+    "store_id": "store_09_kidzworld",
+    "name": "Superhero Action Figure",
+    "brand": "Marvel",
+    "price": 1500,
+    "currency": "INR",
+    "attributes": {
+      "character": "Spider-Man",
+      "height": "12 inches"
+    }
+  },
+  {
+    "_id": "prod_088",
+    "store_id": "store_09_kidzworld",
+    "name": "Princess Dress-Up Set",
+    "brand": "Disney Princess",
+    "price": 2800,
+    "currency": "INR",
+    "attributes": {
+      "size": "Toddler",
+      "includes": "Dress, Tiara"
+    }
+  },
+  {
+    "_id": "prod_089",
+    "store_id": "store_09_kidzworld",
+    "name": "Drawing & Easel Set",
+    "brand": "Crayola",
+    "price": 3200,
+    "currency": "INR",
+    "attributes": {
+      "medium": "Markers, Crayons",
+      "includes": "Easel"
+    }
+  },
+  {
+    "_id": "prod_090",
+    "store_id": "store_09_kidzworld",
+    "name": "Building Bricks Set",
+    "brand": "Block Mania",
+    "price": 900,
+    "currency": "INR",
+    "attributes": {
+      "pieces": 150,
+      "color": "Assorted"
+    }
+  },
+  {
+    "_id": "prod_091",
+    "store_id": "store_10_healthplus",
+    "name": "Multivitamin Tablets",
+    "brand": "Wellspring",
+    "price": 550,
+    "currency": "INR",
+    "attributes": {
+      "count": 60,
+      "benefits": "Immunity"
+    }
+  },
+  {
+    "_id": "prod_092",
+    "store_id": "store_10_healthplus",
+    "name": "Aloe Vera Face Wash",
+    "brand": "Natural Glow",
+    "price": 280,
+    "currency": "INR",
+    "attributes": {
+      "volume": "150ml",
+      "skin_type": "All"
+    }
+  },
+  {
+    "_id": "prod_093",
+    "store_id": "store_10_healthplus",
+    "name": "Pain Relief Spray",
+    "brand": "Quick Relief",
+    "price": 199,
+    "currency": "INR",
+    "attributes": {
+      "volume": "100g",
+      "application": "Topical"
+    }
+  },
+  {
+    "_id": "prod_094",
+    "store_id": "store_10_healthplus",
+    "name": "Vitamin C Gummies",
+    "brand": "Gummy Bites",
+    "price": 350,
+    "currency": "INR",
+    "attributes": {
+      "count": 30,
+      "flavor": "Orange"
+    }
+  },
+  {
+    "_id": "prod_095",
+    "store_id": "store_10_healthplus",
+    "name": "Sunscreen Lotion",
+    "brand": "SunShield",
+    "price": 499,
+    "currency": "INR",
+    "attributes": {
+      "SPF": "50+",
+      "volume": "120ml"
+    }
+  },
+  {
+    "_id": "prod_096",
+    "store_id": "store_10_healthplus",
+    "name": "Digital Thermometer",
+    "brand": "MediScan",
+    "price": 700,
+    "currency": "INR",
+    "attributes": {
+      "type": "Digital",
+      "features": "Fever Alarm"
+    }
+  },
+  {
+    "_id": "prod_097",
+    "store_id": "store_10_healthplus",
+    "name": "Hand Sanitizer",
+    "brand": "PureGuard",
+    "price": 99,
+    "currency": "INR",
+    "attributes": {
+      "volume": "500ml",
+      "alcohol_content": "70%"
+    }
+  },
+  {
+    "_id": "prod_098",
+    "store_id": "store_10_healthplus",
+    "name": "Protein Powder",
+    "brand": "ProFit",
+    "price": 1800,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Chocolate",
+      "weight": "1kg"
+    }
+  },
+  {
+    "_id": "prod_099",
+    "store_id": "store_10_healthplus",
+    "name": "First Aid Kit",
+    "brand": "FirstLine",
+    "price": 650,
+    "currency": "INR",
+    "attributes": {
+      "contents": "Bandages, Antiseptic Wipes"
+    }
+  },
+  {
+    "_id": "prod_100",
+    "store_id": "store_10_healthplus",
+    "name": "Herbal Tea",
+    "brand": "Zen Herbs",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Chamomile",
+      "packets": 20
+    }
+  },
+  {
+    "_id": "prod_101",
+    "store_id": "store_11_freshfinds",
+    "name": "Organic Apples (1kg)",
+    "brand": "Fresh Finds",
+    "price": 180,
+    "currency": "INR",
+    "attributes": {
+      "type": "Produce",
+      "organic": "True"
+    }
+  },
+  {
+    "_id": "prod_102",
+    "store_id": "store_11_freshfinds",
+    "name": "Basmati Rice (5kg)",
+    "brand": "Royal Grains",
+    "price": 650,
+    "currency": "INR",
+    "attributes": {
+      "type": "Staple",
+      "weight": "5kg"
+    }
+  },
+  {
+    "_id": "prod_103",
+    "store_id": "store_11_freshfinds",
+    "name": "Whole Wheat Bread",
+    "brand": "Bakehouse",
+    "price": 55,
+    "currency": "INR",
+    "attributes": {
+      "type": "Bakery",
+      "fresh": "True"
+    }
+  },
+  {
+    "_id": "prod_104",
+    "store_id": "store_11_freshfinds",
+    "name": "Cheddar Cheese Block",
+    "brand": "Dairy Delights",
+    "price": 280,
+    "currency": "INR",
+    "attributes": {
+      "weight": "200g",
+      "type": "Dairy"
+    }
+  },
+  {
+    "_id": "prod_105",
+    "store_id": "store_11_freshfinds",
+    "name": "Black Tea Bags (Box of 100)",
+    "brand": "Golden Brew",
+    "price": 300,
+    "currency": "INR",
+    "attributes": {
+      "type": "Beverage",
+      "count": 100
+    }
+  },
+  {
+    "_id": "prod_106",
+    "store_id": "store_11_freshfinds",
+    "name": "Frozen Peas (500g)",
+    "brand": "Farm Fresh",
+    "price": 85,
+    "currency": "INR",
+    "attributes": {
+      "type": "Frozen",
+      "weight": "500g"
+    }
+  },
+  {
+    "_id": "prod_107",
+    "store_id": "store_11_freshfinds",
+    "name": "Olive Oil (1L)",
+    "brand": "Mediterra",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "type": "Oil",
+      "volume": "1L"
+    }
+  },
+  {
+    "_id": "prod_108",
+    "store_id": "store_11_freshfinds",
+    "name": "Chicken Breast (500g)",
+    "brand": "Meat Master",
+    "price": 220,
+    "currency": "INR",
+    "attributes": {
+      "type": "Meat",
+      "fresh": "True"
+    }
+  },
+  {
+    "_id": "prod_109",
+    "store_id": "store_11_freshfinds",
+    "name": "Potato Chips (Family Pack)",
+    "brand": "Crispy Snacks",
+    "price": 120,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Salted",
+      "size": "Family"
+    }
+  },
+  {
+    "_id": "prod_110",
+    "store_id": "store_11_freshfinds",
+    "name": "Dishwasher Detergent Pods",
+    "brand": "Clean Home",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "count": 30,
+      "type": "Cleaning"
+    }
+  },
+  {
+    "_id": "prod_111",
+    "store_id": "store_12_thekitchenco",
+    "name": "Non-Stick Frying Pan",
+    "brand": "Pannister",
+    "price": 1500,
+    "currency": "INR",
+    "attributes": {
+      "size": "26cm",
+      "material": "Aluminum"
+    }
+  },
+  {
+    "_id": "prod_112",
+    "store_id": "store_12_thekitchenco",
+    "name": "Electric Kettle",
+    "brand": "Boil-It",
+    "price": 2200,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "1.7L",
+      "features": "Auto Shut-off"
+    }
+  },
+  {
+    "_id": "prod_113",
+    "store_id": "store_12_thekitchenco",
+    "name": "Blender",
+    "brand": "BlendTech",
+    "price": 4800,
+    "currency": "INR",
+    "attributes": {
+      "power": "750W",
+      "jar": "1.5L"
+    }
+  },
+  {
+    "_id": "prod_114",
+    "store_id": "store_12_thekitchenco",
+    "name": "Knife Block Set (7-piece)",
+    "brand": "Sharp Edge",
+    "price": 5500,
+    "currency": "INR",
+    "attributes": {
+      "material": "Stainless Steel",
+      "includes": "Chef, Paring, Santoku"
+    }
+  },
+  {
+    "_id": "prod_115",
+    "store_id": "store_12_thekitchenco",
+    "name": "Mixing Bowl Set (3-piece)",
+    "brand": "Mixing Masters",
+    "price": 899,
+    "currency": "INR",
+    "attributes": {
+      "material": "Ceramic",
+      "color": "White"
+    }
+  },
+  {
+    "_id": "prod_116",
+    "store_id": "store_12_thekitchenco",
+    "name": "Silicone Spatula Set",
+    "brand": "Heat Resistant",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "count": 5,
+      "material": "Silicone"
+    }
+  },
+  {
+    "_id": "prod_117",
+    "store_id": "store_12_thekitchenco",
+    "name": "Electric Hand Mixer",
+    "brand": "Whisk & Co.",
+    "price": 1800,
+    "currency": "INR",
+    "attributes": {
+      "speeds": "5",
+      "attachments": "Dough Hooks"
+    }
+  },
+  {
+    "_id": "prod_118",
+    "store_id": "store_12_thekitchenco",
+    "name": "Cookbook 'Indian Cuisine'",
+    "brand": "Culinary Classics",
+    "price": 750,
+    "currency": "INR",
+    "attributes": {
+      "pages": 250,
+      "cuisine": "Indian"
+    }
+  },
+  {
+    "_id": "prod_119",
+    "store_id": "store_12_thekitchenco",
+    "name": "Glass Food Storage Containers",
+    "brand": "StoreSafe",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "count": 4,
+      "material": "Borosilicate Glass"
+    }
+  },
+  {
+    "_id": "prod_120",
+    "store_id": "store_12_thekitchenco",
+    "name": "Digital Kitchen Scale",
+    "brand": "MeasurePro",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "5kg",
+      "units": "grams, oz"
+    }
+  },
+  {
+    "_id": "prod_121",
+    "store_id": "store_13_glamorous",
+    "name": "Hydrating Face Serum",
+    "brand": "Glow Up",
+    "price": 850,
+    "currency": "INR",
+    "attributes": {
+      "volume": "30ml",
+      "ingredients": "Hyaluronic Acid"
+    }
+  },
+  {
+    "_id": "prod_122",
+    "store_id": "store_13_glamorous",
+    "name": "Matte Lipstick",
+    "brand": "Lip Lustre",
+    "price": 499,
+    "currency": "INR",
+    "attributes": {
+      "color": "Ruby Red",
+      "finish": "Matte"
+    }
+  },
+  {
+    "_id": "prod_123",
+    "store_id": "store_13_glamorous",
+    "name": "Eau de Parfum",
+    "brand": "Scentia",
+    "price": 3500,
+    "currency": "INR",
+    "attributes": {
+      "volume": "100ml",
+      "notes": "Floral, Woody"
+    }
+  },
+  {
+    "_id": "prod_124",
+    "store_id": "store_13_glamorous",
+    "name": "Detoxifying Clay Mask",
+    "brand": "Pure Earth",
+    "price": 600,
+    "currency": "INR",
+    "attributes": {
+      "skin_type": "Oily, Combination"
+    }
+  },
+  {
+    "_id": "prod_125",
+    "store_id": "store_13_glamorous",
+    "name": "Foundation",
+    "brand": "Flawless",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "shade": "Medium Beige",
+      "finish": "Satin"
+    }
+  },
+  {
+    "_id": "prod_126",
+    "store_id": "store_13_glamorous",
+    "name": "Eye Shadow Palette",
+    "brand": "Colour Pop",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "shades": 12,
+      "color_theme": "Nudes"
+    }
+  },
+  {
+    "_id": "prod_127",
+    "store_id": "store_13_glamorous",
+    "name": "Mascara",
+    "brand": "Lashify",
+    "price": 350,
+    "currency": "INR",
+    "attributes": {
+      "type": "Volumizing",
+      "color": "Black"
+    }
+  },
+  {
+    "_id": "prod_128",
+    "store_id": "store_13_glamorous",
+    "name": "Nail Polish",
+    "brand": "Glossy Nails",
+    "price": 150,
+    "currency": "INR",
+    "attributes": {
+      "color": "Bubblegum Pink",
+      "finish": "Glossy"
+    }
+  },
+  {
+    "_id": "prod_129",
+    "store_id": "store_13_glamorous",
+    "name": "Hair Oil",
+    "brand": "Silky Strands",
+    "price": 400,
+    "currency": "INR",
+    "attributes": {
+      "volume": "100ml",
+      "ingredients": "Argan Oil"
+    }
+  },
+  {
+    "_id": "prod_130",
+    "store_id": "store_13_glamorous",
+    "name": "Body Lotion",
+    "brand": "HydraCare",
+    "price": 550,
+    "currency": "INR",
+    "attributes": {
+      "volume": "250ml",
+      "scent": "Lavender"
+    }
+  },
+  {
+    "_id": "prod_131",
+    "store_id": "store_14_gamershub",
+    "name": "PlayStation 5 Console",
+    "brand": "Sony",
+    "price": 54999,
+    "currency": "INR",
+    "attributes": {
+      "storage": "825GB SSD",
+      "features": "4K Gaming"
+    }
+  },
+  {
+    "_id": "prod_132",
+    "store_id": "store_14_gamershub",
+    "name": "Xbox Series X Console",
+    "brand": "Microsoft",
+    "price": 52999,
+    "currency": "INR",
+    "attributes": {
+      "storage": "1TB SSD",
+      "features": "120 FPS"
+    }
+  },
+  {
+    "_id": "prod_133",
+    "store_id": "store_14_gamershub",
+    "name": "Nintendo Switch Console",
+    "brand": "Nintendo",
+    "price": 28999,
+    "currency": "INR",
+    "attributes": {
+      "display": "7-inch OLED",
+      "type": "Handheld"
+    }
+  },
+  {
+    "_id": "prod_134",
+    "store_id": "store_14_gamershub",
+    "name": "DualSense Wireless Controller",
+    "brand": "Sony",
+    "price": 5999,
+    "currency": "INR",
+    "attributes": {
+      "color": "Cosmic Red",
+      "features": "Haptic Feedback"
+    }
+  },
+  {
+    "_id": "prod_135",
+    "store_id": "store_14_gamershub",
+    "name": "Gaming Headset",
+    "brand": "Razer",
+    "price": 8999,
+    "currency": "INR",
+    "attributes": {
+      "audio": "7.1 Surround",
+      "connectivity": "Wireless"
+    }
+  },
+  {
+    "_id": "prod_136",
+    "store_id": "store_14_gamershub",
+    "name": "Elden Ring (PS5)",
+    "brand": "Bandai Namco",
+    "price": 3499,
+    "currency": "INR",
+    "attributes": {
+      "genre": "Action RPG",
+      "platform": "PS5"
+    }
+  },
+  {
+    "_id": "prod_137",
+    "store_id": "store_14_gamershub",
+    "name": "Halo Infinite (Xbox)",
+    "brand": "Microsoft",
+    "price": 3299,
+    "currency": "INR",
+    "attributes": {
+      "genre": "First-Person Shooter",
+      "platform": "Xbox"
+    }
+  },
+  {
+    "_id": "prod_138",
+    "store_id": "store_14_gamershub",
+    "name": "Gaming Chair",
+    "brand": "Cougar",
+    "price": 17500,
+    "currency": "INR",
+    "attributes": {
+      "material": "PU Leather",
+      "features": "Adjustable"
+    }
+  },
+  {
+    "_id": "prod_139",
+    "store_id": "store_14_gamershub",
+    "name": "Gaming Keyboard",
+    "brand": "Logitech",
+    "price": 6500,
+    "currency": "INR",
+    "attributes": {
+      "switches": "Mechanical",
+      "backlit": "RGB"
+    }
+  },
+  {
+    "_id": "prod_140",
+    "store_id": "store_14_gamershub",
+    "name": "FIFA 25 (All Platforms)",
+    "brand": "EA Sports",
+    "price": 3999,
+    "currency": "INR",
+    "attributes": {
+      "genre": "Sports Simulation"
+    }
+  },
+  {
+    "_id": "prod_141",
+    "store_id": "store_15_travelgear",
+    "name": "Hard-Shell Suitcase",
+    "brand": "Samsonite",
+    "price": 8999,
+    "currency": "INR",
+    "attributes": {
+      "size": "Medium",
+      "color": "Black"
+    }
+  },
+  {
+    "_id": "prod_142",
+    "store_id": "store_15_travelgear",
+    "name": "Travel Backpack",
+    "brand": "Osprey",
+    "price": 5499,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "40L",
+      "features": "Laptop Sleeve"
+    }
+  },
+  {
+    "_id": "prod_143",
+    "store_id": "store_15_travelgear",
+    "name": "Memory Foam Neck Pillow",
+    "brand": "Comfort Travel",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "material": "Memory Foam"
+    }
+  },
+  {
+    "_id": "prod_144",
+    "store_id": "store_15_travelgear",
+    "name": "RFID-Blocking Passport Holder",
+    "brand": "Secure Voyage",
+    "price": 650,
+    "currency": "INR",
+    "attributes": {
+      "material": "Leather",
+      "color": "Brown"
+    }
+  },
+  {
+    "_id": "prod_145",
+    "store_id": "store_15_travelgear",
+    "name": "Universal Travel Adapter",
+    "brand": "Global Power",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "sockets": "Universal",
+      "USB_ports": 2
+    }
+  },
+  {
+    "_id": "prod_146",
+    "store_id": "store_15_travelgear",
+    "name": "Portable Laundry Bag",
+    "brand": "Clean Traveler",
+    "price": 350,
+    "currency": "INR",
+    "attributes": {
+      "material": "Nylon",
+      "foldable": "True"
+    }
+  },
+  {
+    "_id": "prod_147",
+    "store_id": "store_15_travelgear",
+    "name": "Digital Luggage Scale",
+    "brand": "Pack Smart",
+    "price": 800,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "50kg",
+      "display": "LCD"
+    }
+  },
+  {
+    "_id": "prod_148",
+    "store_id": "store_15_travelgear",
+    "name": "First Aid Kit (Travel Size)",
+    "brand": "MediKit",
+    "price": 500,
+    "currency": "INR",
+    "attributes": {
+      "contents": "Bandages, Wipes"
+    }
+  },
+  {
+    "_id": "prod_149",
+    "store_id": "store_15_travelgear",
+    "name": "Compression Socks",
+    "brand": "Flight Comfort",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "size": "L",
+      "material": "Nylon, Spandex"
+    }
+  },
+  {
+    "_id": "prod_150",
+    "store_id": "store_15_travelgear",
+    "name": "Foldable Rain Jacket",
+    "brand": "Rain Guard",
+    "price": 3200,
+    "currency": "INR",
+    "attributes": {
+      "color": "Yellow",
+      "packable": "True"
+    }
+  },
+  {
+    "_id": "prod_151",
+    "store_id": "store_16_cinemax",
+    "name": "Movie Ticket (Standard)",
+    "brand": "Cinemax",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "type": "2D",
+      "seating": "Standard"
+    }
+  },
+  {
+    "_id": "prod_152",
+    "store_id": "store_16_cinemax",
+    "name": "3D Movie Ticket",
+    "brand": "Cinemax",
+    "price": 350,
+    "currency": "INR",
+    "attributes": {
+      "type": "3D",
+      "seating": "Premium"
+    }
+  },
+  {
+    "_id": "prod_153",
+    "store_id": "store_16_cinemax",
+    "name": "Popcorn (Large)",
+    "brand": "Cinemax",
+    "price": 150,
+    "currency": "INR",
+    "attributes": {
+      "size": "Large",
+      "flavor": "Salted"
+    }
+  },
+  {
+    "_id": "prod_154",
+    "store_id": "store_16_cinemax",
+    "name": "Soft Drink (Medium)",
+    "brand": "Coca-Cola",
+    "price": 90,
+    "currency": "INR",
+    "attributes": {
+      "size": "Medium",
+      "type": "Beverage"
+    }
+  },
+  {
+    "_id": "prod_155",
+    "store_id": "store_16_cinemax",
+    "name": "Combo Deal (Popcorn + Drink)",
+    "brand": "Cinemax",
+    "price": 220,
+    "currency": "INR",
+    "attributes": {
+      "items": [
+        "Popcorn",
+        "Drink"
+      ]
+    }
+  },
+  {
+    "_id": "prod_156",
+    "store_id": "store_16_cinemax",
+    "name": "Nachos with Cheese",
+    "brand": "Cinemax",
+    "price": 180,
+    "currency": "INR",
+    "attributes": {
+      "topping": "Cheese Sauce",
+      "snack": "Nachos"
+    }
+  },
+  {
+    "_id": "prod_157",
+    "store_id": "store_16_cinemax",
+    "name": "VIP Recliner Ticket",
+    "brand": "Cinemax",
+    "price": 500,
+    "currency": "INR",
+    "attributes": {
+      "seating": "Recliner",
+      "experience": "VIP"
+    }
+  },
+  {
+    "_id": "prod_158",
+    "store_id": "store_16_cinemax",
+    "name": "Candy Box",
+    "brand": "Cinemax",
+    "price": 100,
+    "currency": "INR",
+    "attributes": {
+      "variety": "Mixed"
+    }
+  },
+  {
+    "_id": "prod_159",
+    "store_id": "store_16_cinemax",
+    "name": "Movie Poster",
+    "brand": "Cinemax",
+    "price": 300,
+    "currency": "INR",
+    "attributes": {
+      "type": "Collectible",
+      "size": "Standard"
+    }
+  },
+  {
+    "_id": "prod_160",
+    "store_id": "store_16_cinemax",
+    "name": "Family Pack (2 Tickets + Snacks)",
+    "brand": "Cinemax",
+    "price": 850,
+    "currency": "INR",
+    "attributes": {
+      "tickets": 2,
+      "snack_bundle": "True"
+    }
+  },
+  {
+    "_id": "prod_161",
+    "store_id": "store_17_ecofashion",
+    "name": "Organic Cotton T-Shirt",
+    "brand": "Green Threads",
+    "price": 1499,
+    "currency": "INR",
+    "attributes": {
+      "material": "Organic Cotton",
+      "color": "Natural"
+    }
+  },
+  {
+    "_id": "prod_162",
+    "store_id": "store_17_ecofashion",
+    "name": "Recycled Denim Jeans",
+    "brand": "Reborn Denim",
+    "price": 3999,
+    "currency": "INR",
+    "attributes": {
+      "material": "Recycled Denim",
+      "fit": "Straight Leg"
+    }
+  },
+  {
+    "_id": "prod_163",
+    "store_id": "store_17_ecofashion",
+    "name": "Bamboo Fabric Polo Shirt",
+    "brand": "Bamboo Wear",
+    "price": 1999,
+    "currency": "INR",
+    "attributes": {
+      "material": "Bamboo",
+      "color": "Navy Blue"
+    }
+  },
+  {
+    "_id": "prod_164",
+    "store_id": "store_17_ecofashion",
+    "name": "Linen Trousers",
+    "brand": "Earth Tones",
+    "price": 2800,
+    "currency": "INR",
+    "attributes": {
+      "material": "Linen",
+      "color": "Beige"
+    }
+  },
+  {
+    "_id": "prod_165",
+    "store_id": "store_17_ecofashion",
+    "name": "Hemp Tote Bag",
+    "brand": "Sustain Goods",
+    "price": 650,
+    "currency": "INR",
+    "attributes": {
+      "material": "Hemp",
+      "reusable": "True"
+    }
+  },
+  {
+    "_id": "prod_166",
+    "store_id": "store_17_ecofashion",
+    "name": "Cork Sandals",
+    "brand": "Nature Walk",
+    "price": 2200,
+    "currency": "INR",
+    "attributes": {
+      "material": "Cork",
+      "size": "8"
+    }
+  },
+  {
+    "_id": "prod_167",
+    "store_id": "store_17_ecofashion",
+    "name": "Recycled Plastic Bottle Jacket",
+    "brand": "Future Threads",
+    "price": 5500,
+    "currency": "INR",
+    "attributes": {
+      "material": "Recycled PET",
+      "features": "Water Resistant"
+    }
+  },
+  {
+    "_id": "prod_168",
+    "store_id": "store_17_ecofashion",
+    "name": "Ethical Wool Sweater",
+    "brand": "Fair Knit",
+    "price": 3800,
+    "currency": "INR",
+    "attributes": {
+      "material": "Ethical Wool",
+      "color": "Cream"
+    }
+  },
+  {
+    "_id": "prod_169",
+    "store_id": "store_17_ecofashion",
+    "name": "Soy-based Fabric Scarf",
+    "brand": "Plant Fiber",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "material": "Soy Fabric",
+      "color": "Green"
+    }
+  },
+  {
+    "_id": "prod_170",
+    "store_id": "store_17_ecofashion",
+    "name": "Jute Backpack",
+    "brand": "Eco Carry",
+    "price": 1800,
+    "currency": "INR",
+    "attributes": {
+      "material": "Jute",
+      "style": "Backpack"
+    }
+  },
+  {
+    "_id": "prod_171",
+    "store_id": "store_18_petspalace",
+    "name": "Dry Dog Food (Chicken)",
+    "brand": "Pawsome Meals",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "weight": "5kg",
+      "flavor": "Chicken"
+    }
+  },
+  {
+    "_id": "prod_172",
+    "store_id": "store_18_petspalace",
+    "name": "Cat Litter",
+    "brand": "Litter Clean",
+    "price": 850,
+    "currency": "INR",
+    "attributes": {
+      "type": "Clumping",
+      "weight": "10kg"
+    }
+  },
+  {
+    "_id": "prod_173",
+    "store_id": "store_18_petspalace",
+    "name": "Squeaky Dog Toy",
+    "brand": "Fun Pups",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "type": "Toy",
+      "material": "Rubber"
+    }
+  },
+  {
+    "_id": "prod_174",
+    "store_id": "store_18_petspalace",
+    "name": "Cat Scratching Post",
+    "brand": "Kitty Scratch",
+    "price": 1800,
+    "currency": "INR",
+    "attributes": {
+      "height": "50cm",
+      "material": "Sisal Rope"
+    }
+  },
+  {
+    "_id": "prod_175",
+    "store_id": "store_18_petspalace",
+    "name": "Fish Food Flakes",
+    "brand": "Aqua Eats",
+    "price": 150,
+    "currency": "INR",
+    "attributes": {
+      "type": "Fish Food",
+      "volume": "100g"
+    }
+  },
+  {
+    "_id": "prod_176",
+    "store_id": "store_18_petspalace",
+    "name": "Pet Bed",
+    "brand": "Sleepy Paws",
+    "price": 1500,
+    "currency": "INR",
+    "attributes": {
+      "size": "Medium",
+      "material": "Plush"
+    }
+  },
+  {
+    "_id": "prod_177",
+    "store_id": "store_18_petspalace",
+    "name": "Bird Cage",
+    "brand": "Aviary Home",
+    "price": 2500,
+    "currency": "INR",
+    "attributes": {
+      "size": "Small",
+      "material": "Metal"
+    }
+  },
+  {
+    "_id": "prod_178",
+    "store_id": "store_18_petspalace",
+    "name": "Leash and Collar Set",
+    "brand": "Walkies",
+    "price": 600,
+    "currency": "INR",
+    "attributes": {
+      "color": "Red",
+      "size": "Medium"
+    }
+  },
+  {
+    "_id": "prod_179",
+    "store_id": "store_18_petspalace",
+    "name": "Dog Shampoo",
+    "brand": "Pet Fresh",
+    "price": 350,
+    "currency": "INR",
+    "attributes": {
+      "volume": "200ml",
+      "type": "Oatmeal"
+    }
+  },
+  {
+    "_id": "prod_180",
+    "store_id": "store_18_petspalace",
+    "name": "Rabbit Pellets",
+    "brand": "Bunny Bliss",
+    "price": 400,
+    "currency": "INR",
+    "attributes": {
+      "weight": "1kg",
+      "ingredients": "Timothy Hay"
+    }
+  },
+  {
+    "_id": "prod_181",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Dumbbell Set (Adjustable)",
+    "brand": "FlexFit",
+    "price": 15000,
+    "currency": "INR",
+    "attributes": {
+      "weight_range": "2.5-24kg",
+      "material": "Steel"
+    }
+  },
+  {
+    "_id": "prod_182",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Yoga Mat",
+    "brand": "Align Yoga",
+    "price": 1800,
+    "currency": "INR",
+    "attributes": {
+      "thickness": "8mm",
+      "material": "TPE"
+    }
+  },
+  {
+    "_id": "prod_183",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Resistance Bands Set",
+    "brand": "Strong Bands",
+    "price": 999,
+    "currency": "INR",
+    "attributes": {
+      "levels": "Light, Medium, Heavy"
+    }
+  },
+  {
+    "_id": "prod_184",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Jump Rope",
+    "brand": "Cardio Pro",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "length": "Adjustable",
+      "material": "Steel Cable"
+    }
+  },
+  {
+    "_id": "prod_185",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Kettlebell",
+    "brand": "Cast Iron",
+    "price": 3200,
+    "currency": "INR",
+    "attributes": {
+      "weight": "12kg",
+      "material": "Cast Iron"
+    }
+  },
+  {
+    "_id": "prod_186",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Foam Roller",
+    "brand": "Recovery",
+    "price": 850,
+    "currency": "INR",
+    "attributes": {
+      "texture": "Textured",
+      "length": "12 inches"
+    }
+  },
+  {
+    "_id": "prod_187",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Workout Gloves",
+    "brand": "Grip Masters",
+    "price": 600,
+    "currency": "INR",
+    "attributes": {
+      "size": "L",
+      "material": "Neoprene"
+    }
+  },
+  {
+    "_id": "prod_188",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Protein Shaker Bottle",
+    "brand": "BlenderBottle",
+    "price": 300,
+    "currency": "INR",
+    "attributes": {
+      "capacity": "700ml",
+      "color": "Green"
+    }
+  },
+  {
+    "_id": "prod_189",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Wrist Wraps",
+    "brand": "PowerLift",
+    "price": 750,
+    "currency": "INR",
+    "attributes": {
+      "material": "Cotton",
+      "use": "Weightlifting"
+    }
+  },
+  {
+    "_id": "prod_190",
+    "store_id": "store_19_fitnessfusion",
+    "name": "Ab Wheel Roller",
+    "brand": "CoreStrength",
+    "price": 900,
+    "currency": "INR",
+    "attributes": {
+      "features": "Dual wheel"
+    }
+  },
+  {
+    "_id": "prod_191",
+    "store_id": "store_20_artisanbites",
+    "name": "Hand-rolled Truffles",
+    "brand": "Cocoa Crafts",
+    "price": 500,
+    "currency": "INR",
+    "attributes": {
+      "count": 6,
+      "flavors": "Assorted"
+    }
+  },
+  {
+    "_id": "prod_192",
+    "store_id": "store_20_artisanbites",
+    "name": "Artisanal Cheese Selection",
+    "brand": "The Cheese Wheel",
+    "price": 1200,
+    "currency": "INR",
+    "attributes": {
+      "weight": "300g",
+      "varieties": "Brie, Cheddar, Gouda"
+    }
+  },
+  {
+    "_id": "prod_193",
+    "store_id": "store_20_artisanbites",
+    "name": "Gourmet Flavored Popcorn",
+    "brand": "Pop Fusion",
+    "price": 250,
+    "currency": "INR",
+    "attributes": {
+      "flavor": "Caramel Drizzle",
+      "bag_size": "Large"
+    }
+  },
+  {
+    "_id": "prod_194",
+    "store_id": "store_20_artisanbites",
+    "name": "Organic Honeycomb",
+    "brand": "Bee Kind",
+    "price": 800,
+    "currency": "INR",
+    "attributes": {
+      "origin": "Organic",
+      "weight": "250g"
+    }
+  },
+  {
+    "_id": "prod_195",
+    "store_id": "store_20_artisanbites",
+    "name": "Spice Blend for Biryani",
+    "brand": "Masala Magic",
+    "price": 150,
+    "currency": "INR",
+    "attributes": {
+      "weight": "50g",
+      "use": "Cooking"
+    }
+  },
+  {
+    "_id": "prod_196",
+    "store_id": "store_20_artisanbites",
+    "name": "Hazelnut Spread",
+    "brand": "Nutty Delights",
+    "price": 450,
+    "currency": "INR",
+    "attributes": {
+      "weight": "350g",
+      "flavor": "Hazelnut"
+    }
+  },
+  {
+    "_id": "prod_197",
+    "store_id": "store_20_artisanbites",
+    "name": "Dried Fruit & Nut Mix",
+    "brand": "Healthy Mix",
+    "price": 550,
+    "currency": "INR",
+    "attributes": {
+      "weight": "500g",
+      "ingredients": "Almonds, Raisins, Walnuts"
+    }
+  },
+  {
+    "_id": "prod_198",
+    "store_id": "store_20_artisanbites",
+    "name": "Artisan Bread Loaf",
+    "brand": "Crusty Bakes",
+    "price": 120,
+    "currency": "INR",
+    "attributes": {
+      "type": "Sourdough",
+      "weight": "400g"
+    }
+  },
+  {
+    "_id": "prod_199",
+    "store_id": "store_20_artisanbites",
+    "name": "Chocolate-Covered Strawberries",
+    "brand": "Berry Sweet",
+    "price": 300,
+    "currency": "INR",
+    "attributes": {
+      "count": 5,
+      "covering": "Dark Chocolate"
+    }
+  },
+  {
+    "_id": "prod_200",
+    "store_id": "store_20_artisanbites",
+    "name": "Gourmet Coffee Beans",
+    "brand": "Bean Supreme",
+    "price": 600,
+    "currency": "INR",
+    "attributes": {
+      "roast": "Medium",
+      "weight": "250g"
+    }
+  }
+]
