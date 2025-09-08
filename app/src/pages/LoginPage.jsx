@@ -51,7 +51,7 @@ function LoginPage() {
         // Correct logic: The code now runs ONLY after a successful fetch response.
         console.log(data);
         alert("Login successful!");
-        navigate("/home");
+        navigate("/");
         
         // Optional: Save the user's token to localStorage for later API calls
         localStorage.setItem("authToken", data.token);

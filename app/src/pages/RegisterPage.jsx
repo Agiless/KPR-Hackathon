@@ -224,7 +224,7 @@ function RegisterPage() {
       // This block runs ONLY if the registration was successful.
       console.log("Registration successful:", data);
       alert("Registration successful! You can now log in.");
-      navigate("/");
+      navigate("/login");
     })
     .catch((err) => {
       // This block runs if there's a network error or an API-level error.

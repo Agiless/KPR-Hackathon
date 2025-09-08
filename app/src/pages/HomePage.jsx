@@ -150,7 +150,7 @@ const HomePage = () => {
             </div>
           ) : (
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/login")}
               className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
             >
               Sign In
