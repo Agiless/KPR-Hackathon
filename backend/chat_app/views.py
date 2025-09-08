@@ -1,4 +1,3 @@
-# chatbot_app/views.py
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,6 +5,9 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from .serializers import UserSerializer
+from .utils import get_chatbot_response
+from rest_framework.decorators import api_view
+from .models import ChatSession, ChatMessage
 
 class UserRegistrationView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -23,7 +25,7 @@ class UserLoginView(APIView):
         else:
             return Response({'error': 'Invalid Credentials'}, status=400)
 
-
+@api_view(["POST"])
 def chatbot_response(request):
     user_message = request.data.get('message')
     if not user_message:
@@ -38,10 +40,8 @@ def chatbot_response(request):
     # Save the user's message
     ChatMessage.objects.create(session=session, sender='user', message=user_message)
 
-    # Call your chatbot's code to get a response
-    # bot_response_text = get_bot_response(user_message)
-    # For this example, we'll use a placeholder response
-    bot_response_text = f"Bot received: '{user_message}'"
+    # Call the new function to get the bot's response
+    bot_response_text = get_chatbot_response(user_message)
 
     # Save the bot's response
     ChatMessage.objects.create(session=session, sender='bot', message=bot_response_text)
