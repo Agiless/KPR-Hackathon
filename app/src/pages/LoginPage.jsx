@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react"; // 👁️ Import icons
+import { Eye, EyeOff } from "lucide-react"; 
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
@@ -14,18 +14,54 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     // 👉 Check if user exists in localStorage
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (
-      storedUser &&
-      storedUser.email === formData.email &&
-      storedUser.password === formData.password
-    ) {
-      navigate("/home");
-    } else {
-      alert("Invalid credentials or user not registered.");
-    }
+    // const storedUser = JSON.parse(localStorage.getItem("user"));
+    // if (
+    //   storedUser &&
+    //   storedUser.email === formData.email &&
+    //   storedUser.password === formData.password
+    // ) {
+    //   navigate("/home");
+    // } else {
+    //   alert("Invalid credentials or user not registered.");
+    // }
+    fetch("http://127.0.0.1:8000/api/login/", {
+        method: "POST",
+        // Correct header syntax
+        headers: {
+            "Content-Type": "application/json",
+        },
+        // Correct body format: stringified JSON
+        body: JSON.stringify({
+            username: formData.name, // Note: your Django view expects 'username', not 'email'
+            password: formData.password
+        }),
+    })
+    .then((resp) => {
+        // Check for non-2xx status codes (e.g., 400 Bad Request)
+        if (!resp.ok) {
+            return resp.json().then(errorData => {
+                throw new Error(errorData.error || 'Login failed.');
+            });
+        }
+        return resp.json();
+    })
+    .then((data) => {
+        // Correct logic: The code now runs ONLY after a successful fetch response.
+        console.log(data);
+        alert("Login successful!");
+        navigate("/home");
+        
+        // Optional: Save the user's token to localStorage for later API calls
+        localStorage.setItem("authToken", data.token);
+
+    })
+    .catch((err) => {
+        // Correct logic: The code runs ONLY if the fetch call or response processing fails.
+        console.error(err);
+        alert(err.message);
+    });
   };
 
   return (
@@ -38,10 +74,10 @@ function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
+            type="text"
+            name="name"
+            placeholder="Username"
+            value={formData.name}
             onChange={handleChange}
             className="w-full p-3 rounded-lg bg-white/30 text-black placeholder-gray-700 focus:outline-none focus:ring-2 focus:ring-white/60"
           />

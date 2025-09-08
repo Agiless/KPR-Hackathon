@@ -18,8 +18,9 @@ export default function SignupPage() {
       setError("Passwords do not match");
       return;
     }
+    setError("")
     // Simulate successful signup
-    navigate("/login");
+        
   };
 
   return (

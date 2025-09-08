@@ -195,8 +195,44 @@ function RegisterPage() {
     }
 
     // 👉 Save new user to localStorage
-    localStorage.setItem("user", JSON.stringify(formData));
-    navigate("/home");
+    fetch("http://127.0.0.1:8000/api/register/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: formData.name,
+        // Assuming your Django serializer also expects an 'email' field.
+        // If not, you may need to collect email separately.
+        email: formData.email,
+        password: formData.password,
+      }),
+    })
+    .then((response) => {
+      if (!response.ok) {
+        // If the server returns an error (e.g., 400 Bad Request),
+        // parse the error message and throw a new error.
+        return response.json().then(errorData => {
+            const errorMessage = Object.values(errorData).flat().join(' ');
+            throw new Error(errorMessage || 'Registration failed.');
+        });
+      }
+      // If successful, parse the JSON response.
+      return response.json();
+    })
+    .then((data) => {
+      // This block runs ONLY if the registration was successful.
+      console.log("Registration successful:", data);
+      alert("Registration successful! You can now log in.");
+      navigate("/");
+    })
+    .catch((err) => {
+      // This block runs if there's a network error or an API-level error.
+      console.error("Registration error:", err);
+      setShowConfirmPassword(err.message);
+    });
+    // localStorage.setItem("user", JSON.stringify(formData));
+    // navigate("/home");
   };
 
   return (
