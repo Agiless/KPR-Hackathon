@@ -6,9 +6,10 @@ import HomePage from "./pages/HomePage";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/home" element={<Navigate to="/" />} /> 👈 Redirects /home to / */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
     </Routes>
   );
 }
