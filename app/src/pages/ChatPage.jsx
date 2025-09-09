@@ -8,6 +8,13 @@ function ChatPage() {
     { from: "bot", text: "Hi! How can I help you today?" }
   ]);
   const [input, setInput] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+    }
+  };
   const navigate = useNavigate();
 
   const handleSend = (e) => {
@@ -55,16 +62,27 @@ function ChatPage() {
             </div>
           ))}
         </div>
-  <form onSubmit={handleSend} className="flex p-2 border-t border-gray-300 bg-white/30 backdrop-blur-md rounded-b-2xl w-full">
-          <input
-            type="text"
-            className="flex-1 border-none rounded-l-lg px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900"
-            placeholder="Type your message..."
-            value={input}
-            onChange={e => setInput(e.target.value)}
-          />
-          <button type="submit" className="bg-blue-900 text-white px-5 py-2 rounded-r-lg font-semibold hover:bg-blue-800 transition">Send</button>
-        </form>
+  <form onSubmit={handleSend} className="flex w-full border-t border-gray-300 bg-white/30 backdrop-blur-md rounded-b-2xl">
+    <input
+      type="text"
+      className="flex-1 border-none px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900 border rounded-l-2xl"
+      placeholder="Type your message..."
+      value={input}
+      onChange={e => setInput(e.target.value)}
+    />
+    <label className="flex items-center cursor-pointer bg-blue-100 hover:bg-blue-200 px-3 py-2 transition">
+      <input
+        type="file"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+      <span role="img" aria-label="Attach" className="text-blue-700 text-lg">📎</span>
+    </label>
+    <button type="submit" className="bg-blue-900 text-white px-5 py-2 font-semibold hover:bg-blue-800 transition border-radius-2px">Send</button>
+  </form>
+  {selectedFile && (
+    <div className="text-xs text-blue-900 mt-1 truncate">Selected file: {selectedFile.name}</div>
+  )}
       </div>
       </div>
     </div>
