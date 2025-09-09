@@ -6,6 +6,7 @@ function LoginPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [loginType, setLoginType] = useState("customer"); // 'customer' or 'retailer'
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +35,22 @@ function LoginPage() {
       style={{ backgroundImage: "url('/image1.jpeg')" }}
     >
       <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl w-full max-w-md mx-4">
+        <div className="flex justify-center mb-4 gap-4">
+          <button
+            type="button"
+            onClick={() => setLoginType('customer')}
+            className={`px-4 py-2 rounded-full font-semibold transition border-2 ${loginType === 'customer' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/40 text-black border-gray-400'}`}
+          >
+            Customer
+          </button>
+          <button
+            type="button"
+            onClick={() => setLoginType('retailer')}
+            className={`px-4 py-2 rounded-full font-semibold transition border-2 ${loginType === 'retailer' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/40 text-black border-gray-400'}`}
+          >
+            Retailer
+          </button>
+        </div>
         <h1 className="text-3xl font-bold text-center text-black mb-6">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
