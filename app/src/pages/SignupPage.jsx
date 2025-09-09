@@ -6,6 +6,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [signupType, setSignupType] = useState("customer"); // 'customer' or 'retailer'
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -25,6 +26,22 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-full max-w-xs">
+        <div className="flex justify-center mb-4 gap-4">
+          <button
+            type="button"
+            onClick={() => setSignupType('customer')}
+            className={`px-4 py-2 rounded-full font-semibold transition border-2 ${signupType === 'customer' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/40 text-black border-gray-400'}`}
+          >
+            Customer
+          </button>
+          <button
+            type="button"
+            onClick={() => setSignupType('retailer')}
+            className={`px-4 py-2 rounded-full font-semibold transition border-2 ${signupType === 'retailer' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/40 text-black border-gray-400'}`}
+          >
+            Retailer
+          </button>
+        </div>
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Sign Up</h2>
         {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
         <div className="mb-4">
