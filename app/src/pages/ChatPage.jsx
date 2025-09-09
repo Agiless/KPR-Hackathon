@@ -22,11 +22,12 @@ function ChatPage() {
 
   return (
     <div
-      className="w-full min-h-screen flex flex-col items-center justify-center bg-cover bg-center relative font-sans"
+      className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
       style={{ backgroundImage: 'url(image6.jpeg)' }}
     >
       <div className="absolute inset-0 bg-gray-900/60 z-0"></div>
-  <div className="relative z-10 w-full h-full min-h-screen flex flex-col justify-center items-center px-2 sm:px-6 p-0 m-0">
+      <div className="relative z-10 w-full flex items-center justify-center">
+  <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-md h-[600px] flex flex-col px-4 sm:px-8 p-0 mx-2 sm:mx-6">
         <div className="absolute top-4 left-4 z-20">
           <button
             onClick={() => navigate('/home')}
@@ -35,38 +36,36 @@ function ChatPage() {
             Home
           </button>
         </div>
-  <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-xl w-full h-full flex flex-col px-2 sm:px-8 py-8 mt-0">
-          {/* Chat icon removed as requested */}
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">Chat Support</h2>
-          <div className="flex-1 overflow-y-auto px-1 pb-4 min-h-0">
-            {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`my-2 flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}
-              >
-                <div className={`px-4 py-2 rounded-xl max-w-xs shadow bg-white/80 m-1`}>
-                  <span className={
-                    msg.from === "user"
-                      ? "text-gray-900 font-semibold"
-                      : "text-gray-900"
-                  }>
-                    {msg.text}
-                  </span>
-                </div>
+        <h2 className="text-2xl font-bold text-center mt-8 mb-4 text-gray-900">Chat Support</h2>
+        <div className="flex-1 overflow-y-auto px-2 pb-2 min-h-0 mt-2">
+          {messages.map((msg, idx) => (
+            <div
+              key={idx}
+              className={`my-2 flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}
+            >
+              <div className={`px-4 py-2 rounded-xl max-w-xs shadow bg-white/80 m-1`}>
+                <span className={
+                  msg.from === "user"
+                    ? "text-gray-900 font-semibold"
+                    : "text-gray-900"
+                }>
+                  {msg.text}
+                </span>
               </div>
-            ))}
-          </div>
-          <form onSubmit={handleSend} className="flex p-2 border-t border-gray-300 bg-white/60 rounded-b-2xl mt-2">
-            <input
-              type="text"
-              className="flex-1 border-none rounded-l-lg px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900"
-              placeholder="Type your message..."
-              value={input}
-              onChange={e => setInput(e.target.value)}
-            />
-            <button type="submit" className="bg-blue-900 text-white px-5 py-2 rounded-r-lg font-semibold hover:bg-blue-800 transition">Send</button>
-          </form>
+            </div>
+          ))}
         </div>
+  <form onSubmit={handleSend} className="flex p-2 border-t border-gray-300 bg-white/30 backdrop-blur-md rounded-b-2xl w-full">
+          <input
+            type="text"
+            className="flex-1 border-none rounded-l-lg px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900"
+            placeholder="Type your message..."
+            value={input}
+            onChange={e => setInput(e.target.value)}
+          />
+          <button type="submit" className="bg-blue-900 text-white px-5 py-2 rounded-r-lg font-semibold hover:bg-blue-800 transition">Send</button>
+        </form>
+      </div>
       </div>
     </div>
   );
