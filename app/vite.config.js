@@ -7,7 +7,14 @@ export default defineConfig({
   server: {
     // Allows your Vite dev server to be accessed by your ngrok URL
     allowedHosts: [
-      '8131256a5640.ngrok-free.app' 
+      '6ca7520ac28f.ngrok-free.app' 
     ],
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:8000", // Django backend
+        changeOrigin: true,
+        secure: false,
+      },
+    }
   }
 })
