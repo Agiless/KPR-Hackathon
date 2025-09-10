@@ -27,7 +27,7 @@ const HomePage = () => {
 
   // Get user from localStorage
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(storedUser);
+const [user, setUser] = useState(storedUser?.name || '');
 
   // Redirect if no user found
   useEffect(() => {
@@ -137,7 +137,7 @@ const HomePage = () => {
               {isDropdownOpen && (
                 <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
                   <div className="flex flex-col items-start gap-2">
-                    <div className="text-sm text-gray-400">{user.name || "Unknown"}</div>
+                    <div className="text-sm text-gray-400">{user|| "Unknown"}</div>
                     <button
                       onClick={handleLogout}
                       className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"

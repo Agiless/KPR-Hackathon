@@ -14,18 +14,6 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // 👉 Check if user exists in localStorage
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
-    // if (
-    //   storedUser &&
-    //   storedUser.email === formData.email &&
-    //   storedUser.password === formData.password
-    // ) {
-    //   navigate("/home");
-    // } else {
-    //   alert("Invalid credentials or user not registered.");
-    // }
     fetch("api/login/", {
         method: "POST",
         // Correct header syntax
@@ -34,7 +22,7 @@ function LoginPage() {
         },
         // Correct body format: stringified JSON
         body: JSON.stringify({
-            username: formData.name, // Note: your Django view expects 'username', not 'email'
+            username: formData.name, 
             password: formData.password
         }),
     })
@@ -50,6 +38,7 @@ function LoginPage() {
     .then((data) => {
         // Correct logic: The code now runs ONLY after a successful fetch response.
         console.log(data);
+        localStorage.setItem("user", JSON.stringify({name:formData.name}));
         alert("Login successful!");
         navigate("/");
         
