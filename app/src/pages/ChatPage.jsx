@@ -1,23 +1,63 @@
 
 
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import getCookie from "../../utils";
 
 function ChatPage() {
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! How can I help you today?" }
   ]);
   const [input, setInput] = useState("");
+  const csrftoken = getCookie('csrftoken')
   const navigate = useNavigate();
 
   const handleSend = (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    setMessages([...messages, { from: "user", text: input }]);
+    e.preventDefault(); // This should be the first line
+
+    // Check if the input is empty or only whitespace.
+    // The 'input' state variable should be checked, not 'messages'.
+    if (!input.trim()) {
+      return; // Stop the function if the input is invalid.
+    }
+
+    // 1. Optimistically add the user's message to the state.
+    // Use a functional update to ensure you're working with the latest state.
+    setMessages(prevMessages => [...prevMessages, { from: "user", text: input }]);
+
+    // Store the current input value before it gets cleared.
+    const userMessage = input;
+
+    // Clear the input field immediately.
     setInput("");
-    setTimeout(() => {
-      setMessages(msgs => [...msgs, { from: "bot", text: "Thank you for your message!" }]);
-    }, 700);
+    console.log(csrftoken)
+    // 2. Send the message to the API.
+    fetch("api/chat/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrftoken
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        message: userMessage
+      }),
+
+    })
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((data) => {
+      // 3. Add the bot's response to the state after the API call is successful.
+      // Use a functional update to avoid stale state issues.
+      console.log(csrftoken,data)
+      setMessages(prevMessages => [...prevMessages, { from: "bot", text: data.response || "Response received." }]);
+    })
+    .catch((err) => {
+      console.error("Error sending message:", err);
+      // Optional: Add a message to the chat indicating an error.
+      setMessages(prevMessages => [...prevMessages, { from: "bot", text: "Sorry, something went wrong." }]);
+    });
   };
 
   return (
