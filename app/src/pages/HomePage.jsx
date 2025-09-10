@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const mockFeatures = [
-  { title: "Mirun", description: "Add here." },
-  { title: "Deepak", description: "Add here." },
-  { title: "Alavandhan", description: "Add here." },
-  { title: "Manoj", description: "Add here." },
+  { title: "3D Map", description: "Explore the mall in 3D with floor navigation", path: "/map" },
+  { title: "Chatbot", description: "Get instant answers about stores & products", path: "/chat" },
+  { title: "Product", description: "Browse and search products with ease", path: "/Product" },
+  { title: "NAME", description: "Custom feature placeholder", path: "/name" },
 ];
+
 
 const mockContactInfo = [
   { label: "Email", value: "contact@example.com" },
@@ -28,6 +29,12 @@ const HomePage = () => {
   // Get user from localStorage
   const storedUser = JSON.parse(localStorage.getItem("user"));
 const [user, setUser] = useState(storedUser?.name || '');
+//     // Get user from localStorage (optional)
+// const storedUser = JSON.parse(localStorage.getItem("user"));
+// const [user, setUser] = useState(storedUser || null);
+
+
+
 
   // Redirect if no user found
   useEffect(() => {
@@ -126,36 +133,38 @@ const [user, setUser] = useState(storedUser?.name || '');
           </div>
 
           {/* User Dropdown */}
-          {user ? (
-            <div className="relative">
-              <div
-                className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-white transition"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                {user.name ? user.name[0].toUpperCase() : "U"}
-              </div>
-              {isDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
-                  <div className="flex flex-col items-start gap-2">
-                    <div className="text-sm text-gray-400">{user|| "Unknown"}</div>
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
+          
+            {user ? (
+              <div className="relative">
+                <div
+                  className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-white transition"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                  {user.name ? user.name[0].toUpperCase() : "U"}
                 </div>
-              )}
-            </div>
-          ) : (
-            <button
-              onClick={() => navigate("/login")}
-              className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
-            >
-              Log-in
-            </button>
-          )}
+                {isDropdownOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
+                    <div className="flex flex-col items-start gap-2">
+                      <div className="text-sm text-gray-400">{user.name}</div>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
+              >
+                Log-in
+              </button>
+            )}
+
 
           {/* Hamburger Menu (Mobile) */}
           <div className="md:hidden flex items-center">
@@ -182,9 +191,10 @@ const [user, setUser] = useState(storedUser?.name || '');
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
               <div className="absolute top-16 right-0 mt-2 w-48 bg-gray-800 rounded-xl shadow-xl p-4 space-y-4">
-                <a href="#home" className="block text-white hover:text-gray-300">Home</a>
+                <a href="/" className="block text-white hover:text-gray-300">Home</a>
                 <a href="#features" className="block text-white hover:text-gray-300">Features</a>
                 <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
+                <a href="/chat" className="block text-white hover:text-gray-300">Chatbot</a>
               </div>
             )}
           </div>
@@ -230,13 +240,14 @@ const [user, setUser] = useState(storedUser?.name || '');
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">Features</h2>
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {mockFeatures.map((feature, index) => (
-              <div
+              <button
                 key={index}
+                onClick={()=> navigate(feature.path)}
                 className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
               >
                 <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
                 <p className="text-gray-200">{feature.description}</p>
-              </div>
+              </button>
             ))}
           </div>
         </section>
