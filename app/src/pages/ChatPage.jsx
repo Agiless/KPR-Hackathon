@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 //import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-
-
-import React, { useState, useRef } from "react";
-import React, { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import getCookie from "../../utils";
 
@@ -108,12 +104,12 @@ function ChatPage() {
 
     // Clear the input field immediately.
     setInput("");
-    setTimeout(() => {
-      setMessages((msgs) => [
-        ...msgs,
-        { from: "bot", text: "Thank you for your message!" }
-      ]);
-    }, 700);
+    // setTimeout(() => {
+    //   setMessages((msgs) => [
+    //     ...msgs,
+    //     { from: "bot", text: "Thank you for your message!" }
+    //   ]);
+    // }, 700);
     console.log(csrftoken)
     // 2. Send the message to the API.
     fetch("api/chat/", {
@@ -161,7 +157,7 @@ function ChatPage() {
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col justify-center items-center px-2 sm:px-6 p-0 m-0">
         <Navbar />
         <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-xl w-full h-full flex flex-col px-2 sm:px-8 py-8 mt-0 max-h-[95vh]">
-          <h2 className="text-3xl font-bold text-center mb-4 text-white">
+          <h2 className="text-3xl font-bold text-center mb-4 text-white mt-3">
             Chat Support
           </h2>
           <div className="flex-1 overflow-y-auto px-1 pb-4 min-h-0">
