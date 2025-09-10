@@ -11,10 +11,11 @@ function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
-          <a href="#home" className="hover:text-gray-400">Home</a>
-          <a href="#features" className="hover:text-gray-400">Features</a>
-          <a href="#contact" className="hover:text-gray-400">Contact</a>
+          <a href="/" className="hover:text-gray-400">Home</a>
+          {/* <a href="#features" className="hover:text-gray-400">Features</a>
+          <a href="#contact" className="hover:text-gray-400">Contact</a> */}
           <Link to="/chat" className="hover:text-gray-400">Chatbot</Link>
+          <Link to="/map" className="hover:text-gray-400">3D Map</Link>
         </div>
 
         {/* Hamburger (Mobile) */}
@@ -42,6 +43,7 @@ function Navbar() {
           {/*<a href="#features" className="block hover:text-gray-400">Features</a>
           <a href="#contact" className="block hover:text-gray-400">Contact</a> */}
           <Link to="/chat" className="block hover:text-gray-400">Chatbot</Link>
+          <Link to="/map" className="hover:text-gray-400">3D Map</Link>
         </div>
       )}
     </nav>

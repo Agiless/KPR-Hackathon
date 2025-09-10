@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const mockFeatures = [
-  { title: "Mirun", description: "Add here." },
-  { title: "Deepak", description: "Add here." },
-  { title: "Alavandhan", description: "Add here." },
-  { title: "Manoj", description: "Add here." },
+  { title: "3D Map", description: "Explore the mall in 3D with floor navigation", path: "/map" },
+  { title: "Chatbot", description: "Get instant answers about stores & products", path: "/chat" },
+  { title: "Product", description: "Browse and search products with ease", path: "/Product" },
+  { title: "NAME", description: "Custom feature placeholder", path: "/name" },
 ];
+
 
 const mockContactInfo = [
   { label: "Email", value: "contact@example.com" },
@@ -190,7 +191,7 @@ const [user, setUser] = useState(storedUser?.name || '');
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
               <div className="absolute top-16 right-0 mt-2 w-48 bg-gray-800 rounded-xl shadow-xl p-4 space-y-4">
-                <a href="#home" className="block text-white hover:text-gray-300">Home</a>
+                <a href="/" className="block text-white hover:text-gray-300">Home</a>
                 <a href="#features" className="block text-white hover:text-gray-300">Features</a>
                 <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
                 <a href="/chat" className="block text-white hover:text-gray-300">Chatbot</a>
@@ -239,13 +240,14 @@ const [user, setUser] = useState(storedUser?.name || '');
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">Features</h2>
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {mockFeatures.map((feature, index) => (
-              <div
+              <button
                 key={index}
+                onClick={()=> navigate(feature.path)}
                 className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
               >
                 <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
                 <p className="text-gray-200">{feature.description}</p>
-              </div>
+              </button>
             ))}
           </div>
         </section>
