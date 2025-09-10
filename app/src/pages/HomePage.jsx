@@ -89,7 +89,7 @@ const HomePage = () => {
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    navigate("/"); // redirect back to login
+    navigate("/login"); // redirect back to login
   };
 
   const closeModal = () => setShowModal({ visible: false, message: "" });
@@ -153,7 +153,7 @@ const HomePage = () => {
               onClick={() => navigate("/login")}
               className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
             >
-              Sign In
+              Log-in
             </button>
           )}
 
