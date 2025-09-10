@@ -28,6 +28,12 @@ const HomePage = () => {
   // Get user from localStorage
   const storedUser = JSON.parse(localStorage.getItem("user"));
 const [user, setUser] = useState(storedUser?.name || '');
+//     // Get user from localStorage (optional)
+// const storedUser = JSON.parse(localStorage.getItem("user"));
+// const [user, setUser] = useState(storedUser || null);
+
+
+
 
   // Redirect if no user found
   useEffect(() => {
@@ -126,36 +132,38 @@ const [user, setUser] = useState(storedUser?.name || '');
           </div>
 
           {/* User Dropdown */}
-          {user ? (
-            <div className="relative">
-              <div
-                className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-white transition"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                {user.name ? user.name[0].toUpperCase() : "U"}
-              </div>
-              {isDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
-                  <div className="flex flex-col items-start gap-2">
-                    <div className="text-sm text-gray-400">{user|| "Unknown"}</div>
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
+          
+            {user ? (
+              <div className="relative">
+                <div
+                  className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-white transition"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                  {user.name ? user.name[0].toUpperCase() : "U"}
                 </div>
-              )}
-            </div>
-          ) : (
-            <button
-              onClick={() => navigate("/login")}
-              className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
-            >
-              Log-in
-            </button>
-          )}
+                {isDropdownOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
+                    <div className="flex flex-col items-start gap-2">
+                      <div className="text-sm text-gray-400">{user.name}</div>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
+              >
+                Log-in
+              </button>
+            )}
+
 
           {/* Hamburger Menu (Mobile) */}
           <div className="md:hidden flex items-center">
@@ -185,6 +193,7 @@ const [user, setUser] = useState(storedUser?.name || '');
                 <a href="#home" className="block text-white hover:text-gray-300">Home</a>
                 <a href="#features" className="block text-white hover:text-gray-300">Features</a>
                 <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
+                <a href="/chat" className="block text-white hover:text-gray-300">Chatbot</a>
               </div>
             )}
           </div>
