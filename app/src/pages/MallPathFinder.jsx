@@ -118,7 +118,7 @@ const MallPathFinder = () => {
   return (
     <div
       className="min-h-screen w-full bg-cover bg-center relative font-sans"
-      style={{ backgroundImage: "url('/image6.jpeg')" }}
+      style={{ backgroundImage: "url('/mall5.png')" }}
     >
         {/*Navbar */}
         <Navbar />
@@ -200,7 +200,11 @@ const MallPathFinder = () => {
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
             <Model />
-            <OrbitControls />
+            <OrbitControls 
+              minDistance={5}   // how close you can zoom in
+              maxDistance={120}  // how far you can zoom out
+            />
+
           </Canvas>
         </div>
       </div>
@@ -229,7 +233,14 @@ const MallPathFinder = () => {
 // Component to load and render the 3D model
 function Model() {
   const gltf = useGLTF("/mallfinal.glb");
-  return <primitive object={gltf.scene} scale={1} />;
+  return (
+    <primitive 
+      object={gltf.scene} 
+      scale={[0.5, 0.5, 0.5]}// adjust this so it looks right
+      position={[0, -2, 0]}   // center it if needed
+    />
+  );
 }
+
 
 export default MallPathFinder;

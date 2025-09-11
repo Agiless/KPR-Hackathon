@@ -151,7 +151,7 @@ function ChatPage() {
   return (
     <div
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
-      style={{ backgroundImage: 'url(image6.jpeg)' }}
+      style={{ backgroundImage: 'url(mall5.png)' }}
     >
       <div className="absolute inset-0 bg-gray-900/60 z-0"></div>
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col justify-center items-center px-2 sm:px-6 p-0 m-0">

@@ -102,7 +102,7 @@ const [user, setUser] = useState(storedUser?.name || '');
 
   const closeModal = () => setShowModal({ visible: false, message: "" });
 
-  const bgImage = "image6.jpeg";
+  const bgImage = "mall1.png";
 
   const getNavLinkClasses = (sectionId) => {
     const baseClasses =

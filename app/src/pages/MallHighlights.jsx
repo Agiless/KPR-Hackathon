@@ -6,23 +6,23 @@ import "slick-carousel/slick/slick-theme.css";
 const highlights = [
   {
     title: "H&M",
-    image: "/images/hm.jpg",
+    image: "/hm.png",
   },
   {
     title: "Food Court",
-    image: "/images/foodcourt.jpg",
+    image: "/food.png",
   },
   {
     title: "PVR Cinemas",
-    image: "/images/pvr.jpg",
+    image: "/movie.png",
   },
   {
     title: "Zara",
-    image: "/images/zara.png",
+    image: "/zara.png",
   },
   {
     title: "Lifestyle",
-    image: "/images/lifestyle.jpg",
+    image: "/poster1.png",
   },
 ];
 
