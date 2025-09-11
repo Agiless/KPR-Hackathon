@@ -218,7 +218,7 @@ function RegisterPage() {
   return (
     <div
       className="min-h-screen w-full flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('/image3.jpeg')" }}
+      style={{ backgroundImage: "url('/mall3.png')" }}
     >
       <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl w-full max-w-md mx-4">
         <div className="flex justify-center mb-4 gap-4">
@@ -434,7 +434,7 @@ function RegisterPage() {
         </form>
         <p className="text-center text-sm text-black mt-4">
           Already have an account?{" "}
-          <Link to="/" className="text-blue-600 font-medium">
+          <Link to="/login" className="text-blue-600 font-medium">
             Login
           </Link>
         </p>

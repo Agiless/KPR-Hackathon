@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import MallHighlights from "./MallHighlights";
 
 const mockFeatures = [
   { title: "3D Map", description: "Explore the mall in 3D with floor navigation", path: "/map" },
@@ -101,7 +102,7 @@ const [user, setUser] = useState(storedUser?.name || '');
 
   const closeModal = () => setShowModal({ visible: false, message: "" });
 
-  const bgImage = "image6.jpeg";
+  const bgImage = "mall1.png";
 
   const getNavLinkClasses = (sectionId) => {
     const baseClasses =
@@ -129,7 +130,7 @@ const [user, setUser] = useState(storedUser?.name || '');
             <a href="#home" className={getNavLinkClasses("home")}>Home</a>
             <a href="#features" className={getNavLinkClasses("features")}>Features</a>
             <a href="#contact" className={getNavLinkClasses("contact")}>Contact</a>
-            <a href="/chat" className="px-3 py-1 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-800/50">Chat</a>
+            {/* <a href="/chat" className="px-3 py-1 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-800/50">Chat</a> */}
           </div>
 
           {/* User Dropdown */}
@@ -194,7 +195,7 @@ const [user, setUser] = useState(storedUser?.name || '');
                 <a href="/" className="block text-white hover:text-gray-300">Home</a>
                 <a href="#features" className="block text-white hover:text-gray-300">Features</a>
                 <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
-                <a href="/chat" className="block text-white hover:text-blue-400">Chat Page</a>
+                
               </div>
             )}
           </div>
@@ -211,12 +212,16 @@ const [user, setUser] = useState(storedUser?.name || '');
           id="home"
           className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20"
         >
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
-            Build Something
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400">
-              Extraordinary
-            </span>
-          </h1>
+          {/* <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
+              Welcome to 
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500">
+                Griffin Mall
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+              Explore. Shop. Experience. Your one-stop destination for fashion, food, and fun.
+            </p>
+
           <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
             A modern platform that delivers the best experiences. Responsive, fast, and designed for the future.
           </p>
@@ -227,8 +232,38 @@ const [user, setUser] = useState(storedUser?.name || '');
             <button className="border border-gray-300 text-gray-200 hover:bg-gray-50 hover:text-gray-900 px-8 py-3 rounded-xl transition shadow-lg">
               Learn More
             </button>
-          </div>
-        </section>
+          </div> */}
+          {user ? (
+    <MallHighlights />
+  ) : (
+    <div className="text-center">
+      <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
+        Welcome to 
+        <span className="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500">
+          Griffin Mall
+        </span>
+      </h1>
+      <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+        Explore. Shop. Experience. Your one-stop destination for fashion, food, and fun.
+      </p>
+      <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+        A modern platform that delivers the best experiences. Responsive, fast, and designed for the future.
+      </p>
+      <div className="flex gap-4 flex-wrap justify-center">
+        <button 
+          onClick={() => navigate("/login")}
+          className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-xl transition shadow-lg"
+        >
+          Get Started
+        </button>
+
+        <button className="border border-gray-300 text-gray-200 hover:bg-gray-50 hover:text-gray-900 px-8 py-3 rounded-xl transition shadow-lg">
+          Learn More
+        </button>
+      </div>
+    </div>
+  )}
+</section>
 
         {/* ✨ Separator */}
         <div className="relative w-full flex items-center justify-center py-8">

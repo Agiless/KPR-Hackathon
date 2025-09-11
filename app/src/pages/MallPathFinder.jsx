@@ -1,11 +1,9 @@
 // src/MallPathFinder.js
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";  
+import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-//import "./map.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-
 
 const mockFeatures = [
   { title: "Parking", description: "Custom feature placeholder", path: "/name" },
@@ -52,7 +50,7 @@ const findShortestPathWithFloors = (graph, start, end) => {
   return [];
 };
 
-// Mall Graph ✅ (original, will normalize later)
+// Mall Graph ✅
 const rawMallGraph = {
   "Nike": { floor: 0, connections: ["Puma", "Skechers", "Reebok"] },
   "Puma": { floor: 0, connections: ["Nike", "Reebok", "Staircase1", "Skechers"] },
@@ -106,6 +104,7 @@ const MallPathFinder = () => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [path, setPath] = useState([]);
+  const [showReview, setShowReview] = useState(false);
   const navigate = useNavigate();
 
   const handleFindPath = () => {
@@ -118,11 +117,10 @@ const MallPathFinder = () => {
   return (
     <div
       className="min-h-screen w-full bg-cover bg-center relative font-sans"
-      style={{ backgroundImage: "url('/image6.jpeg')" }}
+      style={{ backgroundImage: "url('/mall5.png')" }}
     >
-        {/*Navbar */}
-        <Navbar />
-
+      {/* Navbar */}
+      <Navbar />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gray-900/70"></div>
@@ -137,7 +135,7 @@ const MallPathFinder = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <input
               id="startPoint"
-              text="startPoint"
+              name="startPoint"
               type="text"
               value={start}
               onChange={(e) => setStart(e.target.value)}
@@ -200,36 +198,77 @@ const MallPathFinder = () => {
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
             <Model />
-            <OrbitControls />
+            <OrbitControls 
+              minDistance={5}
+              maxDistance={120}
+            />
           </Canvas>
         </div>
       </div>
-              <section id="features" className="py-20 px-6 sm:px-10 md:px-16 lg:px-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">Features</h2>
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {mockFeatures.map((feature, index) => (
-              <button
-                key={index}
-                onClick={()=> navigate(feature.path)}
-                className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
-              >
-                <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
-                <p className="text-gray-200">{feature.description}</p>
-              </button>
-            ))}
+
+      {/* Features */}
+      <section id="features" className="py-20 px-6 sm:px-10 md:px-16 lg:px-20">
+        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">Features</h2>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          {mockFeatures.map((feature, index) => (
+            <button
+              key={index}
+              onClick={() => navigate(feature.path)}
+              className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+            >
+              <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+              <p className="text-gray-200">{feature.description}</p>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Floating Chat Icon */}
+      <button
+        onClick={() => setShowReview(true)}
+        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg z-50"
+      >
+        💬
+      </button>
+
+      {/* Review Modal */}
+      {showReview && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 relative">
+            <button
+              onClick={() => setShowReview(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+            <h2 className="text-xl font-bold mb-4 text-gray-900">Leave a Review</h2>
+            <textarea
+              id="review"
+              name="review"
+              rows="4"
+              placeholder="Write your review..."
+              className="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition shadow-lg">
+              Submit Review
+            </button>
           </div>
-        </section>
+        </div>
+      )}
     </div>
   );
 };
 
-{/* Features */}
-
-
 // Component to load and render the 3D model
 function Model() {
   const gltf = useGLTF("/mallfinal.glb");
-  return <primitive object={gltf.scene} scale={1} />;
+  return (
+    <primitive 
+      object={gltf.scene} 
+      scale={[0.5, 0.5, 0.5]}
+      position={[0, -2, 0]}
+    />
+  );
 }
 
 export default MallPathFinder;

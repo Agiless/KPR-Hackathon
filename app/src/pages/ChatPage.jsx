@@ -525,7 +525,7 @@ function ChatPage() {
   return (
     <div
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
-      style={{ backgroundImage: 'url(image6.jpeg)' }}
+      style={{ backgroundImage: 'url(mall5.png)' }}
     >
       <div className="absolute inset-0 bg-gray-900/60 z-0"></div>
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col justify-center items-center px-2 sm:px-6 p-0 m-0">
@@ -624,13 +624,14 @@ function ChatPage() {
             </div>
           )}
           <form onSubmit={handleSend} className="flex w-full border-t border-gray-300 bg-white/30 backdrop-blur-md rounded-b-2xl">
-            <input
-              type="text"
-              className="flex-1 border-none px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900 border rounded-l-2xl"
-              placeholder="Type your message..."
-              value={input}
-              onChange={e => setInput(e.target.value)}
-            />
+            <textarea
+            rows={1}
+            className="flex-1 border-none px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900 border rounded-l-2xl resize-none"
+            placeholder="Type your message..."
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}   // 👈 now works properly
+          />
             <div className="relative flex items-center ml-1">
               <button
                 type="button"
