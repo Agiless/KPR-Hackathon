@@ -195,7 +195,7 @@ const [user, setUser] = useState(storedUser?.name || '');
                 <a href="/" className="block text-white hover:text-gray-300">Home</a>
                 <a href="#features" className="block text-white hover:text-gray-300">Features</a>
                 <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
-                {/* <a href="/chat" className="block text-white hover:text-gray-300">Chatbot</a> */}
+                <a href="/chat" className="block text-white hover:text-blue-400">Chat Page</a>
               </div>
             )}
           </div>

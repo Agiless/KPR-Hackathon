@@ -1,13 +1,15 @@
-from rest_framework import generics
+from rest_framework import generics,status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .serializers import UserSerializer
 from .utils import get_chatbot_response
 from rest_framework.decorators import api_view
 from .models import ChatSession, ChatMessage
+from .serializers import ShopRegistrationSerializer
+from .models import Shop
 
 class UserRegistrationView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -24,6 +26,33 @@ class UserLoginView(APIView):
             return Response({'token': token.key})
         else:
             return Response({'error': 'Invalid Credentials'}, status=400)
+
+class LogoutAPIView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({"detail": "Logged out"}, status=status.HTTP_200_OK)
+
+
+class ShopRegistrationView(generics.CreateAPIView):
+    queryset = Shop.objects.all()
+    serializer_class = ShopRegistrationSerializer
+
+class ShopLoginView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        try:
+            shop = Shop.objects.get(email=email)
+            user = authenticate(request, username=shop.owner.username, password=password)
+            if user is not None:
+                login(request, user)
+                token, created = Token.objects.get_or_create(user=user)
+                return Response({'token': token.key})
+            else:
+                return Response({'error': 'Invalid credentials'}, status=400)
+        except Shop.DoesNotExist:
+            return Response({'error': 'Invalid credentials'}, status=400)
 
 @api_view(["POST"])
 def chatbot_response(request):

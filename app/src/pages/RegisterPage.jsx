@@ -5,13 +5,39 @@ import { Eye, EyeOff } from "lucide-react";
 
 
 function RegisterPage() {
+  const [registerType, setRegisterType] = useState("customer"); // 'customer' or 'retailer'
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    category: "",
+    description: "",
+    tags: [], // array of tags
+    tagInput: "", // for the input field
+    floor: "",
+    shopName: "",
   });
+  // Handle tag input and add tag on space or comma or enter
+  const handleTagInput = (e) => {
+    const value = e.target.value;
+    if (value.endsWith(" ") || value.endsWith(",") || value.endsWith("#") || e.key === "Enter") {
+      const tag = value.replace(/[# ,]/g, "").trim();
+      if (tag && !formData.tags.includes(tag)) {
+        setFormData((prev) => ({ ...prev, tags: [...prev.tags, tag], tagInput: "" }));
+      } else {
+        setFormData((prev) => ({ ...prev, tagInput: "" }));
+      }
+    } else {
+      setFormData((prev) => ({ ...prev, tagInput: value }));
+    }
+  };
+
+  // Remove tag
+  const removeTag = (tag) => {
+    setFormData((prev) => ({ ...prev, tags: prev.tags.filter((t) => t !== tag) }));
+  };
   const [showPassword, setShowPassword] = useState(false);
   const [passwordValidations, setPasswordValidations] = useState({
     length: false,
@@ -47,6 +73,70 @@ function RegisterPage() {
     });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (formData.password !== formData.confirmPassword) {
+  //     alert("Passwords do not match!");
+  //     return;
+  //   }
+
+  //   // Check if all password rules are satisfied
+  //   if (
+  //     !(
+  //       passwordValidations.length &&
+  //       passwordValidations.upper &&
+  //       passwordValidations.lower &&
+  //       passwordValidations.number &&
+  //       passwordValidations.special
+  //     )
+  //   ) {
+  //     alert("Password is not strong enough!");
+  //     return;
+  //   }
+
+  //   // 👉 Save new user to localStorage
+  //   fetch("api/register/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       username: formData.name,
+  //       // Assuming your Django serializer also expects an 'email' field.
+  //       // If not, you may need to collect email separately.
+  //       email: formData.email,
+  //       password: formData.password,
+  //     }),
+  //   })
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       // If the server returns an error (e.g., 400 Bad Request),
+  //       // parse the error message and throw a new error.
+  //       return response.json().then(errorData => {
+  //           const errorMessage = Object.values(errorData).flat().join(' ');
+  //           throw new Error(errorMessage || 'Registration failed.');
+  //       });
+  //     }
+  //     // If successful, parse the JSON response.
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     // This block runs ONLY if the registration was successful.
+  //     console.log("Registration successful:", data);
+  //     alert("Registration successful! You can now log in.");
+  //     navigate("/login");
+  //   })
+  //   .catch((err) => {
+  //     // This block runs if there's a network error or an API-level error.
+  //     console.error("Registration error:", err);
+  //     setShowConfirmPassword(err.message);
+  //   });
+  //   // localStorage.setItem("user", JSON.stringify(formData));
+  //   // navigate("/home");
+  //   localStorage.setItem("user", JSON.stringify(formData));
+  //   navigate("/");
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -69,47 +159,60 @@ function RegisterPage() {
       return;
     }
 
-    // 👉 Save new user to localStorage
-    fetch("api/register/", {
+    // Determine the API endpoint and data based on registerType
+    let endpoint;
+    let data;
+
+    if (registerType === "customer") {
+      endpoint = "api/register/";
+      data = {
+        username: formData.name,
+        email: formData.email,
+        password: formData.password,
+      };
+    } else if (registerType === "retailer") {
+      endpoint = "api/shop/register/";
+      data = {
+        owner_name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        shop_name: formData.shopName,
+        floor: formData.floor,
+        category: formData.category,
+        description: formData.description,
+        product_tags: formData.tags,
+      };
+    } else {
+      alert("Invalid registration type.");
+      return;
+    }
+
+    // 👉 Send data to the appropriate API endpoint
+    fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: formData.name,
-        // Assuming your Django serializer also expects an 'email' field.
-        // If not, you may need to collect email separately.
-        email: formData.email,
-        password: formData.password,
-      }),
+      body: JSON.stringify(data),
     })
-    .then((response) => {
-      if (!response.ok) {
-        // If the server returns an error (e.g., 400 Bad Request),
-        // parse the error message and throw a new error.
-        return response.json().then(errorData => {
-            const errorMessage = Object.values(errorData).flat().join(' ');
-            throw new Error(errorMessage || 'Registration failed.');
-        });
-      }
-      // If successful, parse the JSON response.
-      return response.json();
-    })
-    .then((data) => {
-      // This block runs ONLY if the registration was successful.
-      console.log("Registration successful:", data);
-      alert("Registration successful! You can now log in.");
-      navigate("/login");
-    })
-    .catch((err) => {
-      // This block runs if there's a network error or an API-level error.
-      console.error("Registration error:", err);
-      setShowConfirmPassword(err.message);
-    });
-    // localStorage.setItem("user", JSON.stringify(formData));
-    // navigate("/home");
-    localStorage.setItem("user", JSON.stringify(formData));
-    navigate("/");
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((errorData) => {
+            const errorMessage = Object.values(errorData).flat().join(" ");
+            throw new Error(errorMessage || "Registration failed.");
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Registration successful:", data);
+        alert("Registration successful! You can now log in.");
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.error("Registration error:", err);
+        setShowConfirmPassword(err.message);
+      });
   };
 
   return (
@@ -118,10 +221,109 @@ function RegisterPage() {
       style={{ backgroundImage: "url('/image3.jpeg')" }}
     >
       <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl w-full max-w-md mx-4">
+        <div className="flex justify-center mb-4 gap-4">
+          <button
+            type="button"
+            onClick={() => setRegisterType('customer')}
+            className={`px-4 py-2 rounded-full font-semibold transition border-2 ${registerType === 'customer' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/40 text-black border-gray-400'}`}
+          >
+            Customer
+          </button>
+          <button
+            type="button"
+            onClick={() => setRegisterType('retailer')}
+            className={`px-4 py-2 rounded-full font-semibold transition border-2 ${registerType === 'retailer' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white/40 text-black border-gray-400'}`}
+          >
+            Retailer
+          </button>
+        </div>
         <h1 className="text-3xl font-bold text-center text-black mb-6">
           Register
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Retailer-specific fields */}
+          {registerType === 'retailer' && (
+            <>
+              {/* Shop Name */}
+              <div>
+                <label className="block text-gray-700 mb-1">Shop Name</label>
+                <input
+                  type="text"
+                  name="shopName"
+                  value={formData.shopName}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg bg-white/30 text-black focus:outline-none focus:ring-2 focus:ring-white/60"
+                  placeholder="Enter your shop name"
+                  required
+                />
+              </div>
+              {/* Floor */}
+              <div>
+                <label className="block text-gray-700 mb-1">Floor</label>
+                <input
+                  type="text"
+                  name="floor"
+                  value={formData.floor}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg bg-white/30 text-black focus:outline-none focus:ring-2 focus:ring-white/60"
+                  placeholder="e.g. Ground, 1st, 2nd, etc."
+                  required
+                />
+              </div>
+              {/* Category Dropdown */}
+              <div>
+                <label className="block text-gray-700 mb-1">Category</label>
+                <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg bg-white/30 text-black focus:outline-none focus:ring-2 focus:ring-white/60"
+                  required
+                >
+                  <option value="">Select Category</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Food">Food</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Home">Home</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              {/* Description */}
+              <div>
+                <label className="block text-gray-700 mb-1">Description</label>
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg bg-white/30 text-black focus:outline-none focus:ring-2 focus:ring-white/60 min-h-[60px]"
+                  placeholder="Describe your shop or offerings..."
+                  required
+                />
+              </div>
+              {/* Tags */}
+              <div>
+                <label className="block text-gray-700 mb-1">Product Tags</label>
+                <input
+                  type="text"
+                  name="tagInput"
+                  value={formData.tagInput}
+                  onChange={handleTagInput}
+                  onKeyDown={handleTagInput}
+                  className="w-full p-3 rounded-lg bg-white/30 text-black focus:outline-none focus:ring-2 focus:ring-white/60"
+                  placeholder="Type a tag and press space, comma, #, or Enter"
+                />
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {formData.tags.map((tag, idx) => (
+                    <span key={idx} className="inline-flex items-center bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                      #{tag}
+                      <button type="button" className="ml-2 text-blue-500 hover:text-red-500" onClick={() => removeTag(tag)}>&times;</button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
           <input
             type="text"
             name="name"

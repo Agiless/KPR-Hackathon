@@ -4,7 +4,7 @@ import google.generativeai as genai
 import json
 
 # --- Gemini setup (keep API key in env var ideally) ---
-genai.configure(api_key="AIzaSyBiVDyT_scKALxY3Gl3Z8Ydb6d_hQM8Yjc")
+genai.configure(api_key="AIzaSyC_KJ_eHxUf8xpe1US9HhGrtUKM21VwwxY")#AIzaSyBiVDyT_scKALxY3Gl3Z8Ydb6d_hQM8Yjc")
 embedding_model = "models/embedding-001"
 
 # --- MongoDB setup (move URI to env var for security) ---
