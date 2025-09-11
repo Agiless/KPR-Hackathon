@@ -11,6 +11,7 @@ class ChatMessage(models.Model):
     session = models.ForeignKey(ChatSession, on_delete=models.CASCADE, related_name='messages')
     sender = models.CharField(max_length=20) # 'user' or 'bot'
     message = models.TextField()
+    image_data_url = models.TextField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
 
@@ -26,3 +27,7 @@ class Shop(models.Model):
 
     def __str__(self):
         return self.shop_name
+
+class UploadedImage(models.Model):
+    image = models.ImageField(upload_to='uploads/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)

@@ -9,7 +9,26 @@ from .utils import get_chatbot_response
 from rest_framework.decorators import api_view
 from .models import ChatSession, ChatMessage
 from .serializers import ShopRegistrationSerializer
-from .models import Shop
+from .models import Shop,UploadedImage
+from django.views.decorators.csrf import csrf_exempt
+
+class UploadedImage(APIView):
+    def post(self,request):
+        if request.method == 'POST':
+            # The 'myImage' key must match the name attribute in your frontend form
+            image_file = request.FILES.get('myImage')
+            if not image_file:
+                return Response({'error': 'No image file found'}, status=400)
+            
+            # Create a new UploadedImage instance and save the file
+            new_image = UploadedImage(image=image_file)
+            new_image.save()
+            
+            return Response({
+                'message': 'Image uploaded successfully!',
+                'imageUrl': new_image.image.url
+            }, status=201)
+        
 
 class UserRegistrationView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -57,6 +76,13 @@ class ShopLoginView(APIView):
 @api_view(["POST"])
 def chatbot_response(request):
     user_message = request.data.get('message')
+    try:
+        img = request.data.get('image')
+        print(img,'\n',user_message)
+        return Response({'\done': 'Message cannot be empty'})
+    except:
+        print('error')
+        return Response({'error': 'Message cannot be empty'}, status=402)
     if not user_message:
         return Response({'error': 'Message cannot be empty'}, status=400)
 
