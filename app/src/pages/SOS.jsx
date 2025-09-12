@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-
+import FloatingAlert from '../components/FloatingAlert';
 // --- SVG Icon Components for clarity ---
 const FileUploadIcon = () => (
     <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
@@ -12,67 +12,67 @@ const Loader = () => (
 );
 
 
-// --- Main Application Component ---
-export default function App() {
-    // --- STATE MANAGEMENT ---
-    const [parentName, setParentName] = useState('');
-    const [childPhoto, setChildPhoto] = useState(null);
-    const [fileName, setFileName] = useState('PNG, JPG, WEBP up to 10MB');
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [agentState, setAgentState] = useState('idle'); // 'reasoning', or 'action'
-    const [aiResponse, setAiResponse] = useState(null);
+export default function SOS() {
+  const [parentName, setParentName] = useState("");
+  const [childPhoto, setChildPhoto] = useState(null);
+  const [fileName, setFileName] = useState("PNG, JPG, WEBP up to 10MB");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [agentState, setAgentState] = useState("idle");
+  const [aiResponse, setAiResponse] = useState(null);
 
-    // --- EVENT HANDLERS ---
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setChildPhoto(file);
-            setFileName(file.name);
-        }
-    };
+  // --- NEW state for floating alert ---
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!childPhoto) {
-            alert("Please upload a photo.");
-            return;
-        }
-        
-        // --- PERCEPTION PHASE ---
-        console.log("Agent Perceiving: Data collected.", { parentName, childPhoto });
-        
-        setAgentState('reasoning');
-        setIsModalOpen(true);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setChildPhoto(file);
+      setFileName(file.name);
+    }
+  };
 
-        // --- REASONING PHASE (SIMULATED) ---
-        console.log("Agent is Reasoning: Simulating call to a multimodal AI model...");
-        setTimeout(() => {
-            const mockAiResponse = {
-                "description": {
-                    "upper_wear": { "type": "T-shirt", "color": "Bright Red", "pattern": "Spider-Man logo" },
-                    "lower_wear": { "type": "Shorts", "color": "Blue" },
-                    "footwear": { "type": "Sneakers", "color": "White" },
-                    "accessories": "None"
-                },
-                "estimated_age_group": "4-6 years old"
-            };
-            
-            setAiResponse(mockAiResponse);
-            
-            // --- ACTION PHASE ---
-            console.log("Agent is taking Action: Formulating the alert...");
-            setAgentState('action');
-        }, 2500);
-    };
-    
-    const closeModal = useCallback(() => {
-        setIsModalOpen(false);
-        // Reset states after a short delay for the closing animation
-        setTimeout(() => {
-            setAgentState('idle');
-            setAiResponse(null);
-        }, 300);
-    }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!childPhoto) {
+      alert("Please upload a photo.");
+      return;
+    }
+
+    console.log("Agent Perceiving: Data collected.", { parentName, childPhoto });
+
+    setAgentState("reasoning");
+    setIsModalOpen(true);
+
+    setTimeout(() => {
+      const mockAiResponse = {
+        description: {
+          upper_wear: { type: "T-shirt", color: "Bright Red", pattern: "Spider-Man logo" },
+          lower_wear: { type: "Shorts", color: "Blue" },
+          footwear: { type: "Sneakers", color: "White" },
+          accessories: "None",
+        },
+        estimated_age_group: "4-6 years old",
+      };
+
+      setAiResponse(mockAiResponse);
+
+      // --- Trigger Floating Alert message ---
+      const message = `🚨 Missing child alert! ${mockAiResponse.estimated_age_group}, last seen wearing ${mockAiResponse.description.upper_wear.color} ${mockAiResponse.description.upper_wear.type}. Stay alert in your area!`;
+      setAlertMessage(message);
+      setShowAlert(true);
+
+      setAgentState("action");
+    }, 2500);
+  };
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+    setTimeout(() => {
+      setAgentState("idle");
+      setAiResponse(null);
+    }, 300);
+  }, []);
 
     // --- RENDER ---
     return (
@@ -161,6 +161,15 @@ export default function App() {
                     </div>
                 </div>
             )}
+
+            {/* Floating emergency banner */}
+      <FloatingAlert
+        message={alertMessage}
+        visible={showAlert}
+        duration={10000}
+        reappearDelay={20000} 
+        onClose={() => setShowAlert(false)}
+      />
         </div>
     );
-}
+}   
