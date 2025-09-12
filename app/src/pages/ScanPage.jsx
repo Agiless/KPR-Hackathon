@@ -9,9 +9,14 @@ export default function ScanPage() {
   const [capturedImage, setCapturedImage] = useState(null);
   const [caption, setCaption] = useState("");
   const [loading, setLoading] = useState(false);
-  const csrftoken = getCookie('csrftoken')
 
-  // Open camera
+  // NEW: State to display backend response
+  const [recommendedImage, setRecommendedImage] = useState(null);
+  const [backendMessage, setBackendMessage] = useState("");
+
+  const csrftoken = getCookie("csrftoken");
+
+  // ---------- CAMERA HANDLING ----------
   const openCamera = async () => {
     setError("");
     setCapturedImage(null);
@@ -28,7 +33,6 @@ export default function ScanPage() {
     }
   };
 
-  // Close camera
   const closeCamera = () => {
     setCameraOpen(false);
     if (videoRef.current && videoRef.current.srcObject) {
@@ -38,7 +42,6 @@ export default function ScanPage() {
     }
   };
 
-  // Capture image from camera
   const handleCapture = () => {
     if (videoRef.current) {
       const video = videoRef.current;
@@ -59,7 +62,7 @@ export default function ScanPage() {
     }
   };
 
-  // Convert base64 to File
+  // ---------- BASE64 -> FILE ----------
   const dataURLtoFile = (dataUrl, fileName) => {
     const arr = dataUrl.split(",");
     const mime = arr[0].match(/:(.*?);/)[1];
@@ -72,7 +75,7 @@ export default function ScanPage() {
     return new File([u8arr], fileName, { type: mime });
   };
 
-  // Upload image to backend
+  // ---------- UPLOAD IMAGE TO BACKEND ----------
   const uploadImage = async () => {
     if (!capturedImage) {
       alert("Please capture an image first!");
@@ -80,23 +83,26 @@ export default function ScanPage() {
     }
 
     setLoading(true);
+    setRecommendedImage(null);
+    setBackendMessage("");
+
     try {
       const file = dataURLtoFile(capturedImage, "captured.png");
 
       const formData = new FormData();
-      formData.append("image", file); // "image" must match Django serializer field name
+      formData.append("image", file); // must match Django serializer field
 
       console.log("FormData entries:");
       for (let pair of formData.entries()) {
-        console.log(pair[0] + ": ", pair[1]); // Debug formData content
+        console.log(pair[0] + ": ", pair[1]); // Debugging formData
       }
 
       const response = await fetch("/api/upload/", {
         method: "POST",
         headers: {
-          "X-CSRFToken": csrftoken, 
+          "X-CSRFToken": csrftoken,
         },
-        credentials:'include',
+        credentials: "include",
         body: formData,
       });
 
@@ -104,18 +110,30 @@ export default function ScanPage() {
       console.log("Upload Response:", data);
 
       if (response.ok) {
-        alert("Image uploaded successfully!");
+        // If backend sends recommended image
+        if (data.recommended_image) {
+          setRecommendedImage(data.recommended_image);
+          setBackendMessage(""); // Clear any message
+        }
+        // If backend sends only a message
+        else if (data.message) {
+          setRecommendedImage(null);
+          setBackendMessage(data.message);
+        } else {
+          setBackendMessage("No recommendation found.");
+        }
       } else {
-        alert("Upload failed: " + (data.error || "Unknown error"));
+        setBackendMessage(data.error || "Unknown error occurred.");
       }
     } catch (err) {
       console.error("Error uploading image:", err);
-      alert("An error occurred during upload");
+      setBackendMessage("An error occurred during upload.");
     } finally {
       setLoading(false);
     }
   };
 
+  // ---------- UI ----------
   return (
     <div
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
@@ -126,6 +144,7 @@ export default function ScanPage() {
         <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-sm flex flex-col items-center justify-center gap-6 p-6 mx-2 sm:mx-6">
           <h2 className="text-2xl font-bold text-gray-700 mb-4">Scan a Product</h2>
 
+          {/* Open Camera Button */}
           {!cameraOpen && (
             <button
               onClick={openCamera}
@@ -137,6 +156,7 @@ export default function ScanPage() {
 
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
 
+          {/* Camera View */}
           {cameraOpen && (
             <div className="flex flex-col items-center gap-4 w-full">
               <video
@@ -163,6 +183,7 @@ export default function ScanPage() {
             </div>
           )}
 
+          {/* Captured Image Preview */}
           {capturedImage && (
             <div className="w-full flex flex-col items-center gap-2 mt-4">
               <label className="block text-gray-700 mb-1">Captured Image:</label>
@@ -187,6 +208,28 @@ export default function ScanPage() {
               >
                 {loading ? "Uploading..." : "Upload Image"}
               </button>
+            </div>
+          )}
+
+          {/* Backend Recommendation or Message */}
+          {(recommendedImage || backendMessage) && (
+            <div className="w-full flex flex-col items-center mt-6 p-4 bg-gray-100 rounded-lg shadow">
+              {recommendedImage && (
+                <>
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">
+                    Recommended Product
+                  </h3>
+                  <img
+                    src={recommendedImage}
+                    alt="Recommendation"
+                    className="rounded-lg border w-full max-h-80"
+                  />
+                </>
+              )}
+
+              {backendMessage && (
+                <p className="text-gray-700 mt-2 text-center">{backendMessage}</p>
+              )}
             </div>
           )}
         </div>

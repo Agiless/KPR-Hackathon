@@ -14,8 +14,24 @@ from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import UploadedImageSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
+import os
+from django.conf import settings
 
 # Rename the view to avoid collision and use a generic view for simplicity
+from .models import UploadedImage
+from .serializers import UploadedImageSerializer
+
+# Your recommendation pipeline
+from .similarity import (
+    load_model,
+    connect_to_db,
+    run_fashion_advisor
+)
+
+# Load model & DB once
+clip_model = load_model()
+db_connection = connect_to_db()
+
 class UploadedImageCreateView(generics.CreateAPIView):
     queryset = UploadedImage.objects.all()
     serializer_class = UploadedImageSerializer
@@ -23,8 +39,25 @@ class UploadedImageCreateView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         instance = serializer.save()
-        # Django will handle saving the file, no manual storage needed
-        return instance
+        image_path = os.path.join(settings.MEDIA_ROOT, str(instance.image))
+
+        try:
+            # Run the recommendation system
+            recommended_image_url = run_fashion_advisor(image_path, db_connection, clip_model)
+            self.recommended_image_url = recommended_image_url
+        except Exception as e:
+            print("Error in run_fashion_advisor:", e)
+            self.recommended_image_url = None
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+
+        return Response({
+            "uploaded_image": self.request.build_absolute_uri(serializer.data['image']),
+            "recommended_image": self.recommended_image_url
+        }, status=status.HTTP_201_CREATED)
 
 
 class UserRegistrationView(generics.CreateAPIView):
