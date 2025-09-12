@@ -149,8 +149,10 @@ from pathlib import Path
 
 # Use environment variables for sensitive data in production
 # This uses your hardcoded values for development, which is what you had before.
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBOV4I_F0MeWrxVglN6lhZ7vt84u-GFFtY")
-MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb+srv://mirunkaushik:mirun2005@cluster0.zdhf1hl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+from dotenv import load_dotenv
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+MONGODB_URI = os.getenv("MONGODB_URI")
 
 # Note: The `BASE_DIR` you had for SQLite setup might also be needed for other paths.
 # If you didn't have it, add this at the top of your settings file.
