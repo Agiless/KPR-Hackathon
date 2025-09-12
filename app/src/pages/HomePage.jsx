@@ -102,26 +102,31 @@ const csrftoken = getCookie('csrftoken');
 
   // Logout
   const handleLogout = async () => {
-    localStorage.removeItem("user");
-    deleteCookie('csrftoken');
-      try{
-    const resp = await fetch("api/logout/",{
+  localStorage.removeItem("user");
+
+  try {
+    const resp = await fetch("/api/logout/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": csrftoken
+        "X-CSRFToken": csrftoken,
       },
       credentials: "include",
-      body:JSON.stringify({})
-    })
-    deleteCookie('sessionid');
-      }
-  catch (error) {
+      body: JSON.stringify({}),
+    });
+
+    if (resp.ok) {
+      console.log("Logout successful");
+      setUser(null);
+      navigate("/login"); // Redirect to login
+    } else {
+      console.error("Logout failed", await resp.json());
+    }
+  } catch (error) {
     console.error("An error occurred during fetch:", error);
-}
-    setUser(null);
-    navigate("/login"); // redirect back to login
-  };
+  }
+  deleteCookie('csrftoken');
+};
 
   const closeModal = () => setShowModal({ visible: false, message: "" });
 

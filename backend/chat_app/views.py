@@ -78,9 +78,17 @@ class UserLoginView(APIView):
 
 class LogoutAPIView(APIView):
     permission_classes = [IsAuthenticated]
+
     def post(self, request):
         logout(request)
-        return Response({"detail": "Logged out"}, status=status.HTTP_200_OK)
+        
+        # Prepare response
+        response = Response({"detail": "Logged out"}, status=status.HTTP_200_OK)
+        
+        # Clear sessionid cookie
+        response.delete_cookie('sessionid')
+
+        return response
 
 
 class ShopRegistrationView(generics.CreateAPIView):
