@@ -1,7 +1,13 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Shop
+from .models import Shop, UploadedImage
 import json
+
+class UploadedImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UploadedImage
+        fields = ['id', 'image', 'uploaded_at']
+        read_only_fields = ['id', 'uploaded_at']
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)

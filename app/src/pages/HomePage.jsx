@@ -101,18 +101,24 @@ const csrftoken = getCookie('csrftoken');
   };
 
   // Logout
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("user");
     deleteCookie('csrftoken');
-    deleteCookie('sessionid');
-    fetch("api/logout",{
+      try{
+    const resp = await fetch("api/logout/",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-CSRFToken": csrftoken
       },
       credentials: "include",
+      body:JSON.stringify({})
     })
+    deleteCookie('sessionid');
+      }
+  catch (error) {
+    console.error("An error occurred during fetch:", error);
+}
     setUser(null);
     navigate("/login"); // redirect back to login
   };

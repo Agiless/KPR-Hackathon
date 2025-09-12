@@ -157,3 +157,5 @@ MONGODB_URI = os.getenv("MONGODB_URI")
 # Note: The `BASE_DIR` you had for SQLite setup might also be needed for other paths.
 # If you didn't have it, add this at the top of your settings file.
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

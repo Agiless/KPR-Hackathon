@@ -316,7 +316,6 @@
 // export default ChatPage;
 
 import React, { useState, useEffect, useRef } from "react";
-//import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import getCookie from "../../utils";
@@ -408,32 +407,59 @@ function ChatPage() {
   const navigate = useNavigate();
   const regex = /^--cdgf2025: \+91[0-9]{10}\n$/
 
-  const handleSend = (e) => {
-    e.preventDefault(); // This should be the first line
+  const handleSend = async (e) => {
+    // Prevent default form submission if the event is passed
+    e?.preventDefault(); 
 
-    // Check if the input is empty or only whitespace.
-    // The 'input' state variable should be checked, not 'messages'.
-    if (!input.trim()) {
-      return; // Stop the function if the input is invalid.
+    // --- CASE 1: Handle Image Upload ---
+    // If there's a pending image with a file, we prioritize sending it.
+    if (pendingImage && pendingImage.file) {
+        const formData = new FormData();
+        formData.append('image', pendingImage.file); // The key 'image' must match your serializer
+
+        try {
+            const response = await fetch('/api/upload/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    // NOTE: Do NOT set Content-Type for FormData, the browser handles it.
+                },
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Image upload failed on the server.');
+            }
+
+            const data = await response.json();
+
+            // Add the message to the chat with the caption and the URL from the server's response
+            setMessages(prevMessages => [...prevMessages, { from: "user", text: pendingCaption, image: data.image }]);
+
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            // Add an error message to the chat for the user
+            setMessages(prevMessages => [...prevMessages, { from: "bot", text: "Sorry, the image could not be uploaded." }]);
+        } finally {
+            // Always clear the pending image state after the attempt
+            setPendingImage(null);
+            setPendingCaption("");
+        }
+        return; // Stop the function here after handling the image
     }
 
-    // 1. Optimistically add the user's message to the state.
-    // Use a functional update to ensure you're working with the latest state.
-    setMessages(prevMessages => [...prevMessages, { from: "user", text: input }]);
+    // --- CASE 2: Handle Text Message ---
+    // This part only runs if there was NO pending image.
+    if (!input.trim()) {
+      return; // Stop if the input is empty
+    }
 
-    // Store the current input value before it gets cleared.
+    // Add user's text message optimistically
     const userMessage = input;
+    setMessages(prevMessages => [...prevMessages, { from: "user", text: userMessage }]);
+    setInput(""); // Clear the input field
 
-    // Clear the input field immediately.
-    setInput("");
-    // setTimeout(() => {
-    //   setMessages((msgs) => [
-    //     ...msgs,
-    //     { from: "bot", text: "Thank you for your message!" }
-    //   ]);
-    // }, 700);
-    console.log(csrftoken)
-    // 2. Send the message to the API.
+    // Fetch call to the chat API for text messages
     fetch("api/chat/", {
       method: "POST",
       headers: {
@@ -444,23 +470,19 @@ function ChatPage() {
       body: JSON.stringify({
         message: userMessage
       }),
-
     })
     .then((resp) => {
+      if (!resp.ok) { throw new Error('Chat API request failed.'); }
       return resp.json();
     })
     .then((data) => {
-      // 3. Add the bot's response to the state after the API call is successful.
-      // Use a functional update to avoid stale state issues.
-      console.log(csrftoken,data)
       setMessages(prevMessages => [...prevMessages, { from: "bot", text: data.response || "Response received." }]);
     })
     .catch((err) => {
       console.error("Error sending message:", err);
-      // Optional: Add a message to the chat indicating an error.
       setMessages(prevMessages => [...prevMessages, { from: "bot", text: "Sorry, something went wrong." }]);
     });
-  };
+};
 
   const handleKeyDown = (e) => {
     // 👇 Allow Enter + Shift for new line, Enter alone sends

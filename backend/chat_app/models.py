@@ -1,6 +1,7 @@
 # chatbot_app/models.py
 from django.db import models
 from django.contrib.auth.models import User
+import os
 # from django.contrib.postgres.fields import ArrayField
 
 class ChatSession(models.Model):
@@ -28,7 +29,21 @@ class Shop(models.Model):
 
     def __str__(self):
         return self.shop_name
+    
+def fixed_image_name(instance, filename):
+    # Always save as 'uploads/latest_image.png'
+    return 'uploads/latest_image.png'
 
 class UploadedImage(models.Model):
-    image = models.ImageField(upload_to='uploads/')
+    image = models.ImageField(upload_to=fixed_image_name)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Get the file path first
+        file_path = os.path.join('media', 'uploads', 'latest_image.png')
+
+        # Delete the existing file BEFORE saving the new one
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+
+        super().save(*args, **kwargs)

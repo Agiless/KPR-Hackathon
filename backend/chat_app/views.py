@@ -12,24 +12,20 @@ from .serializers import ShopRegistrationSerializer
 from .models import Shop,UploadedImage
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
+from .serializers import UploadedImageSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
 
-class UploadedImage(APIView):
-    def post(self,request):
-        if request.method == 'POST':
-            # The 'myImage' key must match the name attribute in your frontend form
-            image_file = request.FILES.get('myImage')
-            if not image_file:
-                return Response({'error': 'No image file found'}, status=400)
-            
-            # Create a new UploadedImage instance and save the file
-            new_image = UploadedImage(image=image_file)
-            new_image.save()
-            
-            return Response({
-                'message': 'Image uploaded successfully!',
-                'imageUrl': new_image.image.url
-            }, status=201)
-        
+# Rename the view to avoid collision and use a generic view for simplicity
+class UploadedImageCreateView(generics.CreateAPIView):
+    queryset = UploadedImage.objects.all()
+    serializer_class = UploadedImageSerializer
+    parser_classes = [MultiPartParser, FormParser]
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        # Django will handle saving the file, no manual storage needed
+        return instance
+
 
 class UserRegistrationView(generics.CreateAPIView):
     queryset = User.objects.all()
