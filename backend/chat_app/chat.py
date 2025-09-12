@@ -2,9 +2,12 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import google.generativeai as genai
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # --- Gemini setup (keep API key in env var ideally) ---
-genai.configure(api_key="AIzaSyBOV4I_F0MeWrxVglN6lhZ7vt84u-GFFtY")
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 embedding_model = "models/embedding-001"
 
 # --- MongoDB setup (move URI to env var for security) ---
