@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import MallHighlights from "./MallHighlights";
+import getCookie from "../../utils";
 
 const mockFeatures = [
   { title: "3D Map", description: "Explore the mall in 3D with floor navigation", path: "/map" },
@@ -9,6 +10,12 @@ const mockFeatures = [
   { title: "NAME", description: "Custom feature placeholder", path: "/name" },
 ];
 
+function deleteCookie(name) {
+  // Set the expiration date to a time in the past
+  // The path=/ ensures it works across the whole site.
+  // Change the path if the cookie was set with a specific path.
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
 
 const mockContactInfo = [
   { label: "Email", value: "contact@example.com" },
@@ -34,7 +41,7 @@ const [user, setUser] = useState(storedUser?.name || '');
 // const storedUser = JSON.parse(localStorage.getItem("user"));
 // const [user, setUser] = useState(storedUser || null);
 
-
+const csrftoken = getCookie('csrftoken');
 
 
   // Redirect if no user found
@@ -96,6 +103,16 @@ const [user, setUser] = useState(storedUser?.name || '');
   // Logout
   const handleLogout = () => {
     localStorage.removeItem("user");
+    deleteCookie('csrftoken');
+    deleteCookie('sessionid');
+    fetch("logout/",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrftoken
+      },
+      credentials: "include",
+    })
     setUser(null);
     navigate("/login"); // redirect back to login
   };

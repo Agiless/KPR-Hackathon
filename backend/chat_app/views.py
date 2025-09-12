@@ -10,6 +10,7 @@ from rest_framework.decorators import api_view
 from .models import ChatSession, ChatMessage
 from .serializers import ShopRegistrationSerializer
 from .models import Shop,UploadedImage
+from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 
 class UploadedImage(APIView):
@@ -47,6 +48,7 @@ class UserLoginView(APIView):
             return Response({'error': 'Invalid Credentials'}, status=400)
 
 class LogoutAPIView(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request):
         logout(request)
         return Response({"detail": "Logged out"}, status=status.HTTP_200_OK)
@@ -76,13 +78,6 @@ class ShopLoginView(APIView):
 @api_view(["POST"])
 def chatbot_response(request):
     user_message = request.data.get('message')
-    try:
-        img = request.data.get('image')
-        print(img,'\n',user_message)
-        return Response({'\done': 'Message cannot be empty'})
-    except:
-        print('error')
-        return Response({'error': 'Message cannot be empty'}, status=402)
     if not user_message:
         return Response({'error': 'Message cannot be empty'}, status=400)
 

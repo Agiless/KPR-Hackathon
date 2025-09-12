@@ -13,7 +13,7 @@ const Loader = () => (
 
 
 // --- Main Application Component ---
-export default function App() {
+export default function SOS() {
     // --- STATE MANAGEMENT ---
     const [parentName, setParentName] = useState('');
     const [childPhoto, setChildPhoto] = useState(null);

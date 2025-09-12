@@ -89,6 +89,7 @@
 //   }, [messages]);
 //   const csrftoken = getCookie('csrftoken')
 //   const navigate = useNavigate();
+//   const regex = /^--cdgf2025: \+91[0-9]{10}$/
 
 //   const handleSend = (e) => {
 //     e.preventDefault(); // This should be the first line
@@ -314,49 +315,11 @@
 
 // export default ChatPage;
 
-
 import React, { useState, useEffect, useRef } from "react";
-// The useNavigate import is kept as it's a built-in React Router hook.
+//import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-
-// The Navbar component is now included directly in this file
-const Navbar = () => {
-  return (
-    <nav className="w-full flex justify-between items-center py-4 px-6 fixed top-0 left-0 z-20">
-      <div className="flex items-center">
-        <span className="text-white text-3xl font-bold">ChatApp</span>
-      </div>
-      <div className="hidden md:flex items-center space-x-4">
-        {/* Placeholder for future links */}
-      </div>
-      <div className="md:hidden">
-        {/* Hamburger menu for mobile */}
-        <button className="text-white focus:outline-none">
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-        </button>
-      </div>
-    </nav>
-  );
-};
-
-// The getCookie utility function is now included directly in this file
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      // Does this cookie string begin with the name we want?
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
+import getCookie from "../../utils";
 
 function ChatPage() {
   const [messages, setMessages] = useState([
@@ -371,17 +334,16 @@ function ChatPage() {
   const [pendingCaption, setPendingCaption] = useState("");
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  
-  // This useEffect hook is now correctly configured to only scroll when the messages array changes.
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  useEffect(()=>{
+
+  },[])
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.onload = (ev) => {
+
         setPendingImage({ src: ev.target.result, file });
         setPendingCaption("");
       };
@@ -415,16 +377,9 @@ function ChatPage() {
       const ctx = canvas.getContext('2d');
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       const imageDataUrl = canvas.toDataURL('image/png');
-      
-      // Convert data URL to Blob to create a file object
-      fetch(imageDataUrl)
-        .then(res => res.blob())
-        .then(blob => {
-          const file = new File([blob], "capture.png", { type: "image/png" });
-          setPendingImage({ src: imageDataUrl, file });
-          setPendingCaption("");
-        });
-        
+      console.log(imageDataUrl)
+      setPendingImage({ src: imageDataUrl, file: null });
+      setPendingCaption("");
       // Stop camera
       if (video.srcObject) {
         video.srcObject.getTracks().forEach(track => track.stop());
@@ -441,77 +396,70 @@ function ChatPage() {
       videoRef.current.srcObject = null;
     }
   };
+  //const navigate = useNavigate();
 
   const messagesEndRef = useRef(null);
 
+  // 👇 Scroll to the bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
   const csrftoken = getCookie('csrftoken')
-  
+  const navigate = useNavigate();
+  const regex = /^--cdgf2025: \+91[0-9]{10}\n$/
+
   const handleSend = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // This should be the first line
 
-    // Determine the user's message and image (if any)
-    const userMessage = input.trim();
-    const isImageUpload = !!pendingImage;
-
-    // Don't send if there's no message and no image
-    if (!userMessage && !isImageUpload) {
-      return;
+    // Check if the input is empty or only whitespace.
+    // The 'input' state variable should be checked, not 'messages'.
+    if (!input.trim()) {
+      return; // Stop the function if the input is invalid.
     }
 
-    // Optimistically add the user's message/image to the state
-    const newMessage = { from: "user", text: userMessage, image: pendingImage?.src };
-    setMessages(prevMessages => [...prevMessages, newMessage]);
+    // 1. Optimistically add the user's message to the state.
+    // Use a functional update to ensure you're working with the latest state.
+    setMessages(prevMessages => [...prevMessages, { from: "user", text: input }]);
 
-    // Clear the input and pending image/caption
+    // Store the current input value before it gets cleared.
+    const userMessage = input;
+
+    // Clear the input field immediately.
     setInput("");
-    setPendingImage(null);
-    setPendingCaption("");
+    // setTimeout(() => {
+    //   setMessages((msgs) => [
+    //     ...msgs,
+    //     { from: "bot", text: "Thank you for your message!" }
+    //   ]);
+    // }, 700);
+    console.log(csrftoken)
+    // 2. Send the message to the API.
+    fetch("api/chat/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrftoken
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        message: userMessage
+      }),
 
-    // Send data to the appropriate API endpoint
-    if (isImageUpload) {
-      const payload = {
-        message: userMessage,
-        image: pendingImage.src // Send the data URL directly
-      };
-      
-      fetch("api/chat/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Set content type for JSON
-          "X-CSRFToken": csrftoken,
-        },
-        credentials: "include",
-        body: JSON.stringify(payload), // Send a JSON payload
-      })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setMessages(prevMessages => [...prevMessages, { from: "bot", text: data.response || "Image received." }]);
-      })
-      .catch((err) => {
-        console.error("Error uploading image:", err);
-        setMessages(prevMessages => [...prevMessages, { from: "bot", text: "Sorry, something went wrong with the image." }]);
-      });
-    } else {
-      fetch("api/chat/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrftoken
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          message: userMessage
-        }),
-      })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setMessages(prevMessages => [...prevMessages, { from: "bot", text: data.response || "Response received." }]);
-      })
-      .catch((err) => {
-        console.error("Error sending message:", err);
-        setMessages(prevMessages => [...prevMessages, { from: "bot", text: "Sorry, something went wrong." }]);
-      });
-    }
+    })
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((data) => {
+      // 3. Add the bot's response to the state after the API call is successful.
+      // Use a functional update to avoid stale state issues.
+      console.log(csrftoken,data)
+      setMessages(prevMessages => [...prevMessages, { from: "bot", text: data.response || "Response received." }]);
+    })
+    .catch((err) => {
+      console.error("Error sending message:", err);
+      // Optional: Add a message to the chat indicating an error.
+      setMessages(prevMessages => [...prevMessages, { from: "bot", text: "Sorry, something went wrong." }]);
+    });
   };
 
   const handleKeyDown = (e) => {
@@ -525,7 +473,7 @@ function ChatPage() {
   return (
     <div
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
-      style={{ backgroundImage: 'url(mall5.png)' }}
+      style={{ backgroundImage: 'url(image6.jpeg)' }}
     >
       <div className="absolute inset-0 bg-gray-900/60 z-0"></div>
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col justify-center items-center px-2 sm:px-6 p-0 m-0">
@@ -549,11 +497,18 @@ function ChatPage() {
                       {msg.text && <div className="text-gray-900 mt-1">{msg.text}</div>}
                     </>
                   ) : (
+                    regex.test(msg.text) ?
+                    <a href = {`tel:${msg.text.slice(14,24)}`}>
+                    <button className="bg-blue-900 text-white px-5 py-2 font-semibold hover:bg-blue-800 transition ml-1 flex items-center justify-center">
+Call now
+                    </button>
+                    </a> 
+                    :
                     <span className={
                       msg.from === "user"
                         ? "text-gray-900 font-semibold"
                         : "text-gray-900"
-                      }>
+                    }>
                       {msg.text}
                     </span>
                   )}
@@ -604,8 +559,12 @@ function ChatPage() {
                   <button
                     className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 transition"
                     onClick={() => {
-                      // Call handleSend with a dummy event to trigger the logic
-                      handleSend({ preventDefault: () => {} });
+                      setMessages(msgs => [
+                        ...msgs,
+                        { from: "user", text: pendingCaption, image: pendingImage.src }
+                      ]);
+                      setPendingImage(null);
+                      setPendingCaption("");
                     }}
                   >
                     Send
@@ -624,14 +583,13 @@ function ChatPage() {
             </div>
           )}
           <form onSubmit={handleSend} className="flex w-full border-t border-gray-300 bg-white/30 backdrop-blur-md rounded-b-2xl">
-            <textarea
-            rows={1}
-            className="flex-1 border-none px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900 border rounded-l-2xl resize-none"
-            placeholder="Type your message..."
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}   // 👈 now works properly
-          />
+            <input
+              type="text"
+              className="flex-1 border-none px-3 py-2 focus:outline-none focus:ring focus:ring-purple-300 bg-white/80 text-gray-900 border rounded-l-2xl"
+              placeholder="Type your message..."
+              value={input}
+              onChange={e => setInput(e.target.value)}
+            />
             <div className="relative flex items-center ml-1">
               <button
                 type="button"

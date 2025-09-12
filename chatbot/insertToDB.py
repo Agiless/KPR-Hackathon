@@ -26,94 +26,94 @@ except Exception as e:
 
 
 #loading json files
-import json
-file_path = 'stores.json'
-file_path1 = 'products.json'
+# import json
+# file_path = 'stores.json'
+# file_path1 = 'products.json'
 
 
-with open(file_path, 'r') as file:
-    STORES_DATA = json.load(file)
-with open(file_path1, 'r') as file:
-    PRODUCTS_DATA = json.load(file)
+# with open(file_path, 'r') as file:
+#     STORES_DATA = json.load(file)
+# with open(file_path1, 'r') as file:
+#     PRODUCTS_DATA = json.load(file)
 
 # --- 2. SAMPLE DATA DEFINITION ---
 # We are defining all data with explicit _id fields to make referencing clear and predictable.
 
 # --- STORES DATA ---
-# STORES_DATA = [
-#     {
-#         "_id": "store_01_lifestyle",
-#         "name": "Lifestyle",
-#         "floor": 1,
-#         "category": "Fashion & Apparel",
-#         "description": "A leading fashion destination for the latest trends.",
-#         "opening_hours": "10:30 AM - 10:00 PM",
-#         "contact": {"phone": "0431-4001234", "manager": "Priya S."},
-#         "tags": ["clothing", "accessories", "footwear", "beauty"]
-#     },
-#     {
-#         "_id": "store_02_croma",
-#         "name": "Croma",
-#         "floor": 2,
-#         "category": "Electronics",
-#         "description": "A one-stop shop for all your electronic needs.",
-#         "opening_hours": "11:00 AM - 9:30 PM",
-#         "contact": {"phone": "0431-4005678", "manager": "Ravi K."},
-#         "tags": ["smartphones", "laptops", "appliances", "gadgets"]
-#     },
-#     {
-#         "_id": "store_03_hamleys",
-#         "name": "Hamleys",
-#         "floor": 0,
-#         "category": "Toys & Hobbies",
-#         "description": "The finest toy shop in the world, bringing magical experiences.",
-#         "opening_hours": "11:00 AM - 9:00 PM",
-#         "contact": {"phone": "0431-4009101", "manager": "Anjali M."},
-#         "tags": ["toys", "games", "kids", "collectibles"]
-#     },
-#     {
-#         "_id": "store_04_sangeetha",
-#         "name": "Sangeetha Veg Restaurant",
-#         "floor": 2,
-#         "category": "Food & Beverage",
-#         "description": "Authentic South Indian vegetarian cuisine.",
-#         "opening_hours": "10:00 AM - 10:30 PM",
-#         "contact": {"phone": "0431-2777888", "manager": "Murali G."},
-#         "tags": ["south indian", "vegetarian", "dosa", "thali", "food court"]
-#     }
-# ]
+STORES_DATA = [
+    {
+        "_id": "store_01_lifestyle",
+        "name": "Lifestyle",
+        "floor": 1,
+        "category": "Fashion & Apparel",
+        "description": "A leading fashion destination for the latest trends.",
+        "opening_hours": "10:30 AM - 10:00 PM",
+        "contact": {"phone": "0431-4001234", "manager": "Priya S."},
+        "tags": ["clothing", "accessories", "footwear", "beauty"]
+    },
+    {
+        "_id": "store_02_croma",
+        "name": "Croma",
+        "floor": 2,
+        "category": "Electronics",
+        "description": "A one-stop shop for all your electronic needs.",
+        "opening_hours": "11:00 AM - 9:30 PM",
+        "contact": {"phone": "0431-4005678", "manager": "Ravi K."},
+        "tags": ["smartphones", "laptops", "appliances", "gadgets"]
+    },
+    {
+        "_id": "store_03_hamleys",
+        "name": "Hamleys",
+        "floor": 0,
+        "category": "Toys & Hobbies",
+        "description": "The finest toy shop in the world, bringing magical experiences.",
+        "opening_hours": "11:00 AM - 9:00 PM",
+        "contact": {"phone": "0431-4009101", "manager": "Anjali M."},
+        "tags": ["toys", "games", "kids", "collectibles"]
+    },
+    {
+        "_id": "store_04_sangeetha",
+        "name": "Sangeetha Veg Restaurant",
+        "floor": 2,
+        "category": "Food & Beverage",
+        "description": "Authentic South Indian vegetarian cuisine.",
+        "opening_hours": "10:00 AM - 10:30 PM",
+        "contact": {"phone": "0431-2777888", "manager": "Murali G."},
+        "tags": ["south indian", "vegetarian", "dosa", "thali", "food court"]
+    }
+]
 
 # # --- PRODUCTS DATA (Linked to Stores) ---
-# PRODUCTS_DATA = [
-#     # Lifestyle Products
-#     {
-#         "_id": "prod_001", "store_id": "store_01_lifestyle", "brand": "Louis Philippe",
-#         "name": "Men's Formal Shirt", "price": 2499.00, "currency": "INR",
-#         "stock_status": "In Stock", "attributes": {"color": "Sky Blue", "sizes": ["M", "L", "XL"]}
-#     },
-#     {
-#         "_id": "prod_002", "store_id": "store_01_lifestyle", "brand": "Fossil",
-#         "name": "Gen 6 Smartwatch", "price": 21995.00, "currency": "INR",
-#         "stock_status": "In Stock", "attributes": {"color": "Rose Gold", "strap": "Leather"}
-#     },
-#     # Croma Products
-#     {
-#         "_id": "prod_003", "store_id": "store_02_croma", "brand": "Apple",
-#         "name": "iPhone 16 Pro", "price": 149900.00, "currency": "INR",
-#         "stock_status": "In Stock", "attributes": {"color": "Titanium Blue", "storage": "256GB"}
-#     },
-#     {
-#         "_id": "prod_004", "store_id": "store_02_croma", "brand": "Sony",
-#         "name": "Bravia 55-inch 4K TV", "price": 74990.00, "currency": "INR",
-#         "stock_status": "Low Stock", "attributes": {"display": "OLED", "model_year": 2025}
-#     },
-#     # Hamleys Products
-#     {
-#         "_id": "prod_005", "store_id": "store_03_hamleys", "brand": "LEGO",
-#         "name": "LEGO Star Wars Millennium Falcon", "price": 15999.00, "currency": "INR",
-#         "stock_status": "In Stock", "attributes": {"age_range": "9-14", "pieces": 1351}
-#     }
-# ]
+PRODUCTS_DATA = [
+    # Lifestyle Products
+    {
+        "_id": "prod_001", "store_id": "store_01_lifestyle", "brand": "Louis Philippe",
+        "name": "Men's Formal Shirt", "price": 2499.00, "currency": "INR",
+        "stock_status": "In Stock", "attributes": {"color": "Sky Blue", "sizes": ["M", "L", "XL"]}
+    },
+    {
+        "_id": "prod_002", "store_id": "store_01_lifestyle", "brand": "Fossil",
+        "name": "Gen 6 Smartwatch", "price": 21995.00, "currency": "INR",
+        "stock_status": "In Stock", "attributes": {"color": "Rose Gold", "strap": "Leather"}
+    },
+    # Croma Products
+    {
+        "_id": "prod_003", "store_id": "store_02_croma", "brand": "Apple",
+        "name": "iPhone 16 Pro", "price": 149900.00, "currency": "INR",
+        "stock_status": "In Stock", "attributes": {"color": "Titanium Blue", "storage": "256GB"}
+    },
+    {
+        "_id": "prod_004", "store_id": "store_02_croma", "brand": "Sony",
+        "name": "Bravia 55-inch 4K TV", "price": 74990.00, "currency": "INR",
+        "stock_status": "Low Stock", "attributes": {"display": "OLED", "model_year": 2025}
+    },
+    # Hamleys Products
+    {
+        "_id": "prod_005", "store_id": "store_03_hamleys", "brand": "LEGO",
+        "name": "LEGO Star Wars Millennium Falcon", "price": 15999.00, "currency": "INR",
+        "stock_status": "In Stock", "attributes": {"age_range": "9-14", "pieces": 1351}
+    }
+]
 
 # --- MALL EVENTS DATA (Linked to Stores where applicable) ---
 EVENTS_DATA = [

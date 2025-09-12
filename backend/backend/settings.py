@@ -32,15 +32,15 @@ SECRET_KEY = 'django-insecure-q88yr7czgo$8zv!a#g45)cli%b#^-#&(^jvohb72ab0r38_=w$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",
-#     "http://127.0.0.1:5173"
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+]
 
 # CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_ALL_ORIGINS=True
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173',"https://5f61061fa018.ngrok-free.app"]
 
 # Application definition
 
@@ -149,7 +149,7 @@ from pathlib import Path
 
 # Use environment variables for sensitive data in production
 # This uses your hardcoded values for development, which is what you had before.
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBiVDyT_scKALxY3Gl3Z8Ydb6d_hQM8Yjc")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBOV4I_F0MeWrxVglN6lhZ7vt84u-GFFtY")
 MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb+srv://mirunkaushik:mirun2005@cluster0.zdhf1hl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 # Note: The `BASE_DIR` you had for SQLite setup might also be needed for other paths.
