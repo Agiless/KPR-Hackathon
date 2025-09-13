@@ -1,5 +1,8 @@
 from django.urls import path
 from .views import UserRegistrationView, UserLoginView, chatbot_response , LogoutAPIView, ShopRegistrationView, ShopLoginView,UploadedImageCreateView
+from django.urls import re_path
+from . import consumers
+
 
 urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='register'),
@@ -9,4 +12,7 @@ urlpatterns = [
     path('shop/register/', ShopRegistrationView.as_view(), name='shop-register'),
     path('shop/login/', ShopLoginView.as_view(), name='shop-login'),
     path('upload/', UploadedImageCreateView.as_view(), name='image-upload'),
+]
+websocket_urlpatterns = [
+    re_path(r'ws/notifications/$', consumers.NotificationConsumer.as_asgi()),
 ]

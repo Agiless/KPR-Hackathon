@@ -9,6 +9,7 @@ export default function ScanPage() {
   const [capturedImage, setCapturedImage] = useState(null);
   const [caption, setCaption] = useState("");
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
 
   // NEW: State to display backend response
   const [recommendedImage, setRecommendedImage] = useState(null);
@@ -113,7 +114,7 @@ export default function ScanPage() {
         // If backend sends recommended image
         if (data.recommended_image) {
           setRecommendedImage(data.recommended_image);
-          setBackendMessage(""); // Clear any message
+          setBackendMessage(data.text); // Clear any message
         }
         // If backend sends only a message
         else if (data.message) {

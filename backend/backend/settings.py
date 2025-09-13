@@ -55,8 +55,21 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     "chat_app",
+    "channels",
     'rest_framework.authtoken'
 ]
+
+ASGI_APPLICATION = "chat_app.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("0.0.0.0", 63799)],  # Redis server
+        },
+    },
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

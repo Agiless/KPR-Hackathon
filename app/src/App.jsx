@@ -7,6 +7,7 @@ import MallPathFinder from "./pages/MallPathFinder";
 import ScanPage from "./pages/ScanPage";
 import SOS from "./pages/SOS";
 import Scan from "./pages/ScanPage"
+import Popup from "./pages/ServicesPage"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/map" element={<MallPathFinder />} />
       <Route path="/sos" element={<SOS />} />
       <Route path="/scan" element={<Scan />} />
+      <Route path="/popup" element={<Popup />} />
     </Routes>
   );
 }
