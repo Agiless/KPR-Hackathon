@@ -66,7 +66,7 @@ Aura is an **all-in-one mall assistant** that:
 
 * **Frontend** → React.js + TailwindCSS + Blender models.
 * **Backend** → Django REST APIs.
-* **Databases** → PostgreSQL (structured), MongoDB (catalogs), Vector DB (search).
+* **Databases** → SQLite (structured), MongoDB (catalogs), Vector DB (search).
 * **AI Modules** →
 
   * Qwen-3 LLM (with RAG) for chat.
