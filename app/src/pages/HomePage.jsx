@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import MallHighlights from "./MallHighlights";
+import getCookie from "../../utils";
 
 const mockFeatures = [
-  { title: "Mirun", description: "Add here." },
-  { title: "Deepak", description: "Add here." },
-  { title: "Alavandhan", description: "Add here." },
-  { title: "Manoj", description: "Add here." },
+  { title: "3D Map", description: "Explore the mall in 3D with floor navigation", path: "/map" },
+  { title: "Chatbot", description: "Get instant answers about stores & products", path: "/chat" },
+  { title: "Product Match", description: "Browse and search products with ease using images", path: "/scan" },
+  { title: "NAME", description: "Custom feature placeholder", path: "/name" },
 ];
+
+function deleteCookie(name) {
+  // Set the expiration date to a time in the past
+  // The path=/ ensures it works across the whole site.
+  // Change the path if the cookie was set with a specific path.
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
 
 const mockContactInfo = [
   { label: "Email", value: "contact@example.com" },
@@ -27,7 +36,13 @@ const HomePage = () => {
 
   // Get user from localStorage
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(storedUser);
+const [user, setUser] = useState(storedUser?.name || '');
+//     // Get user from localStorage (optional)
+// const storedUser = JSON.parse(localStorage.getItem("user"));
+// const [user, setUser] = useState(storedUser || null);
+
+const csrftoken = getCookie('csrftoken');
+
 
   // Redirect if no user found
   useEffect(() => {
@@ -86,15 +101,36 @@ const HomePage = () => {
   };
 
   // Logout
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/"); // redirect back to login
-  };
+  const handleLogout = async () => {
+  localStorage.removeItem("user");
+
+  try {
+    const resp = await fetch("/api/logout/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrftoken,
+      },
+      credentials: "include",
+      body: JSON.stringify({}),
+    });
+
+    if (resp.ok) {
+      console.log("Logout successful");
+      setUser(null);
+      navigate("/login"); // Redirect to login
+    } else {
+      console.error("Logout failed", await resp.json());
+    }
+  } catch (error) {
+    console.error("An error occurred during fetch:", error);
+  }
+  deleteCookie('csrftoken');
+};
 
   const closeModal = () => setShowModal({ visible: false, message: "" });
 
-  const bgImage = "image6.jpeg";
+  const bgImage = "mall1.png";
 
   const getNavLinkClasses = (sectionId) => {
     const baseClasses =
@@ -122,39 +158,42 @@ const HomePage = () => {
             <a href="#home" className={getNavLinkClasses("home")}>Home</a>
             <a href="#features" className={getNavLinkClasses("features")}>Features</a>
             <a href="#contact" className={getNavLinkClasses("contact")}>Contact</a>
+            {/* <a href="/chat" className="px-3 py-1 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-800/50">Chat</a> */}
           </div>
 
           {/* User Dropdown */}
-          {user ? (
-            <div className="relative">
-              <div
-                className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-white transition"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                {user.name ? user.name[0].toUpperCase() : "U"}
-              </div>
-              {isDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
-                  <div className="flex flex-col items-start gap-2">
-                    <div className="text-sm text-gray-400">{user.name || "Unknown"}</div>
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
+          
+            {user ? (
+              <div className="relative">
+                <div
+                  className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer hover:ring-2 hover:ring-white transition"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                  {user.name ? user.name[0].toUpperCase() : "U"}
                 </div>
-              )}
-            </div>
-          ) : (
-            <button
-              onClick={() => navigate("/")}
-              className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
-            >
-              Sign In
-            </button>
-          )}
+                {isDropdownOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-72 bg-gray-800/90 backdrop-blur-md rounded-xl shadow-xl p-4">
+                    <div className="flex flex-col items-start gap-2">
+                      <div className="text-sm text-gray-400">{user.name}</div>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-center bg-red-600 px-4 py-2 mt-2 rounded-xl hover:bg-red-500 transition shadow-lg"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                className="bg-green-600 px-4 py-2 rounded-xl hover:bg-green-500 transition shadow-lg"
+              >
+                Log-in
+              </button>
+            )}
+
 
           {/* Hamburger Menu (Mobile) */}
           <div className="md:hidden flex items-center">
@@ -181,9 +220,10 @@ const HomePage = () => {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
               <div className="absolute top-16 right-0 mt-2 w-48 bg-gray-800 rounded-xl shadow-xl p-4 space-y-4">
-                <a href="#home" className="block text-white hover:text-gray-300">Home</a>
+                <a href="/" className="block text-white hover:text-gray-300">Home</a>
                 <a href="#features" className="block text-white hover:text-gray-300">Features</a>
                 <a href="#contact" className="block text-white hover:text-gray-300">Contact</a>
+                
               </div>
             )}
           </div>
@@ -200,12 +240,16 @@ const HomePage = () => {
           id="home"
           className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20"
         >
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
-            Build Something
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400">
-              Extraordinary
-            </span>
-          </h1>
+          {/* <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
+              Welcome to 
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500">
+                Griffin Mall
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+              Explore. Shop. Experience. Your one-stop destination for fashion, food, and fun.
+            </p>
+
           <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
             A modern platform that delivers the best experiences. Responsive, fast, and designed for the future.
           </p>
@@ -216,8 +260,38 @@ const HomePage = () => {
             <button className="border border-gray-300 text-gray-200 hover:bg-gray-50 hover:text-gray-900 px-8 py-3 rounded-xl transition shadow-lg">
               Learn More
             </button>
-          </div>
-        </section>
+          </div> */}
+          {user ? (
+    <MallHighlights />
+  ) : (
+    <div className="text-center">
+      <h1 className="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-xl">
+        Welcome to 
+        <span className="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500">
+          Griffin Mall
+        </span>
+      </h1>
+      <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+        Explore. Shop. Experience. Your one-stop destination for fashion, food, and fun.
+      </p>
+      <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-6">
+        A modern platform that delivers the best experiences. Responsive, fast, and designed for the future.
+      </p>
+      <div className="flex gap-4 flex-wrap justify-center">
+        <button 
+          onClick={() => navigate("/login")}
+          className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-xl transition shadow-lg"
+        >
+          Get Started
+        </button>
+
+        <button className="border border-gray-300 text-gray-200 hover:bg-gray-50 hover:text-gray-900 px-8 py-3 rounded-xl transition shadow-lg">
+          Learn More
+        </button>
+      </div>
+    </div>
+  )}
+</section>
 
         {/* ✨ Separator */}
         <div className="relative w-full flex items-center justify-center py-8">
@@ -229,13 +303,14 @@ const HomePage = () => {
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">Features</h2>
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {mockFeatures.map((feature, index) => (
-              <div
+              <button
                 key={index}
+                onClick={()=> navigate(feature.path)}
                 className="bg-white/20 backdrop-blur-md p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
               >
                 <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
                 <p className="text-gray-200">{feature.description}</p>
-              </div>
+              </button>
             ))}
           </div>
         </section>
