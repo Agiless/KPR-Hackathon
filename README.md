@@ -1,15 +1,5 @@
 # KPR-Hackathon
 
-`https://github.com/Agiless/KPR-Hackathon.git`
-
-I’ll enhance the **humanized README** by:
-
-* Adding **GitHub clone instructions** with your actual repo URL.
-* Linking your repo under project title.
-* Making the README feel like a polished open-source project page.
-
-Here’s the improved **final README.md** 👇
-
 ---
 
 # Aura: AI-Powered Mall Assistant
@@ -62,11 +52,13 @@ Aura is an **all-in-one mall assistant** that:
 
 ## ✨ What Aura Can Do
 
-✔ **Conversational AI** – Chat with Aura for directions, store info, and promotions.
-✔ **Visual Product Search** – Upload a product image to find matches inside the mall.
-✔ **3D Indoor Navigation** – Interactive map with shortest-path guidance.
-✔ **Parking & Service Finder** – Check live availability.
-✔ **SOS Safety System** – Trigger alerts in case of emergencies.
+✔ Conversational AI – Chat with Aura for directions, store info, and promotions.
+✔ Visual Product Search – Upload a product image to find matches inside the mall.
+✔ 3D Indoor Navigation – Interactive map with shortest-path guidance.
+✔ Parking & Service Finder – Check live availability.
+✔ SOS Safety System – Trigger alerts in case of emergencies.
+✔ Feature Image Rendering – If you buy a shirt, Aura suggests matching accessories, pants, or related products.
+✔ Credit System (Aura Coins) – Users earn coins by leaving genuine reviews (based on majority sentiment). These coins can be redeemed for discounts, offers, or even selected products.
 
 ---
 
