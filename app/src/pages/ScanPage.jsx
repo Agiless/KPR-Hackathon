@@ -1,6 +1,7 @@
 
 import React, { useRef, useState } from "react";
 import getCookie from "../../utils";
+import Navbar from "../components/Navbar";
 
 export default function ScanPage() {
   const videoRef = useRef(null);
@@ -186,6 +187,9 @@ export default function ScanPage() {
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
       style={{ backgroundImage: "url(image6.jpeg)" }}
     >
+
+        <Navbar/>
+
       <div className="absolute inset-0 bg-gray-900/60 z-0"></div>
       <div className="relative z-10 w-full flex items-center justify-center">
         <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-sm flex flex-col items-center justify-center gap-6 p-6 mx-2 sm:mx-6">

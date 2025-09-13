@@ -6,7 +6,7 @@ import getCookie from "../../utils";
 const mockFeatures = [
   { title: "3D Map", description: "Explore the mall in 3D with floor navigation", path: "/map" },
   { title: "Chatbot", description: "Get instant answers about stores & products", path: "/chat" },
-  { title: "Product", description: "Browse and search products with ease", path: "/Product" },
+  { title: "Product Match", description: "Browse and search products with ease using images", path: "/scan" },
   { title: "NAME", description: "Custom feature placeholder", path: "/name" },
 ];
 
