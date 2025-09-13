@@ -7,7 +7,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 
 const mockFeatures = [
   { title: "Parking", description: "Custom feature placeholder", path: "/name" },
-  { title: "SOS", description: "Custom feature placeholder", path: "/sos" },
+  { title: "SOS", description: "What's is your emergency", path: "/sos" },
   { title: "Name", description: "Custom feature placeholder", path: "/name" },
   { title: "Name", description: "Custom feature placeholder", path: "/name" },
 ];
