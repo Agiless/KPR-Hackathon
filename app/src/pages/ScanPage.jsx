@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from "react";
 import getCookie from "../../utils";
 
@@ -53,7 +54,6 @@ export default function ScanPage() {
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       const imageDataUrl = canvas.toDataURL("image/png");
       setCapturedImage(imageDataUrl);
-
       // Close camera after capture
       setCameraOpen(false);
       if (video.srcObject) {
@@ -63,18 +63,64 @@ export default function ScanPage() {
     }
   };
 
-  // ---------- BASE64 -> FILE ----------
-  const dataURLtoFile = (dataUrl, fileName) => {
+  // Handle file upload (from device storage)
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCapturedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Utility: Convert base64 -> File
+  function dataURLtoFile(dataUrl, filename) {
     const arr = dataUrl.split(",");
     const mime = arr[0].match(/:(.*?);/)[1];
     const bstr = atob(arr[1]);
     let n = bstr.length;
     const u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new File([u8arr], filename, { type: mime });
+  }
+
+  // Upload handler (Cloudinary example, with optional backend call)
+  const handleUpload = async () => {
+    if (!capturedImage) return;
+
+    try {
+      const formData = new FormData();
+      const file = dataURLtoFile(capturedImage, "scan.png");
+      formData.append("file", file);
+      formData.append("upload_preset", "your_unsigned_preset"); // Replace with Cloudinary preset
+
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/<your-cloud-name>/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      console.log("Uploaded to Cloudinary:", data.secure_url);
+      alert("Image uploaded successfully!");
+
+      // --- Optional: send to your backend with caption ---
+      // await fetch("http://localhost:5000/api/upload", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ imageUrl: data.secure_url, caption }),
+      // });
+    } catch (error) {
+      console.error("Upload failed:", error);
+      alert("Failed to upload image.");
     }
-    return new File([u8arr], fileName, { type: mime });
   };
+
+
 
   // ---------- UPLOAD IMAGE TO BACKEND ----------
   const uploadImage = async () => {
@@ -154,6 +200,23 @@ export default function ScanPage() {
               Open Camera
             </button>
           )}
+
+          {/* Upload from storage */}
+          <div className="flex flex-col items-center w-full">
+            <input
+              type="file"
+              accept="image/*"
+              id="fileInput"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+            <label
+              htmlFor="fileInput"
+              className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-indigo-700 transition cursor-pointer mt-2"
+            >
+              Choose File
+            </label>
+          </div>
 
           {error && <div className="text-red-600 text-sm mb-2">{error}</div>}
 
